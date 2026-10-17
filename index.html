@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a2a5e">
+    <meta name="description" content="مستشفى الأنهار التخصصي في الحديدة - رعاية طبية متكاملة على مدار الساعة.">
+<meta name="google-site-verification" content="4v2Jn6WehkzBDlYvZF5Kj-K389l-pso3dat0NiucUMg" />
+<title>مستشفى الأنهار التخصصي | صحتكم مسؤوليتنا</title>
+    
+    <!-- خط تجوال العربي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    
+    <style>
+        /* ==================== المتغيرات الأساسية ==================== */
+        :root {
+            --primary-navy: #0a2a5e;
+            --secondary-blue: #1e4a8a;
+            --accent-green: #2ecc71;
+            --bg-light: #f8f9fa;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-color: #d1d5db;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .section-padding { padding: 4.5rem 0; }
+        .text-center { text-align: center; }
+        .text-white { color: #fff; }
+
+        /* ==================== تأثيرات الحركة والظهور ==================== */
+        .reveal-fade {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-fade.visible { opacity: 1; transform: translateY(0); }
+        
+        .reveal-left {
+            opacity: 0; transform: translateX(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        
+        .reveal-scale {
+            opacity: 0; transform: scale(0.9);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+        /* ==================== تأثير الكتابة المتحركة ==================== */
+        .typing-line {
+            display: inline-block;
+            border-right: 2px solid var(--accent-green);
+            padding-right: 6px;
+            animation: blinkCursor 0.8s infinite;
+        }
+        @keyframes blinkCursor {
+            0%, 100% { border-right-color: var(--accent-green); }
+            50% { border-right-color: transparent; }
+        }
+
+        /* ==================== القسم الرئيسي مع صورة الخلفية ==================== */
+        .hero {
+            position: relative;
+            padding: 8rem 0 6rem;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            /* ✅ صورة المبنى كخلفية كاملة */
+            background-image: url("above.png");
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+        /* طبقة التظليل فوق الصورة */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 42, 94, 0.78), rgba(30, 74, 138, 0.75));
+            z-index: 1;
+        }
+        .hero-container { position: relative; z-index: 2; }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: 
+                radial-gradient(circle, rgba(46, 204, 113, 0.08) 10%, transparent 20%),
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 15%, transparent 30%);
+            background-size: 80px 80px;
+            animation: floatParticles 25s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
+        @keyframes floatParticles {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(40px, 40px) rotate(360deg); }
+        }
+
+        /* ==================== النصوص والأزرار ==================== */
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(46, 204, 113, 0.15);
+            color: var(--accent-green);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            margin-bottom: 1.5rem;
+        }
+        .hero-title { font-size: 2.4rem; line-height: 1.4; margin-bottom: 1.2rem; font-weight: 800; }
+        .hero-subtitle { font-size: 1.15rem; line-height: 1.8; opacity: 0.92; max-width: 800px; margin: 0 auto 2rem; }
+        .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            border: none; cursor: pointer;
+            font-size: 1rem; font-family: inherit;
+            transition: all var(--transition-normal);
+        }
+        .btn:hover { transform: translateY(-3px); }
+        .btn-primary { background-color: var(--accent-green); color: #fff; }
+        .btn-primary:hover { background-color: #27ae60; }
+        .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.15); }
+
+        .section-header { margin-bottom: 3rem; }
+        .section-header h2 {
+            font-size: 1.8rem; color: var(--primary-navy);
+            margin-bottom: 0.75rem; position: relative; display: inline-block;
+        }
+        .section-header h2::after {
+            content: ''; position: absolute; bottom: -8px; right: 50%;
+            transform: translateX(50%); width: 60px; height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), #27ae60);
+            border-radius: 2px;
+        }
+        .section-header p { color: var(--text-muted); font-size: 1.05rem; margin-top: 1rem; }
+
+        /* ==================== قسم لماذا تختارنا ==================== */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .feature-card {
+            text-align: center; padding: 2rem; border-radius: var(--radius-lg);
+            background: #fff; border: 1px solid #eee;
+            transition: transform var(--transition-normal);
+        }
+        .feature-card:hover { transform: translateY(-8px); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feature-card h3 { color: var(--primary-navy); font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* ==================== قسم القيم والرؤية والرسالة ==================== */
+        .values-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            position: relative; overflow: hidden;
+        }
+        .values-block {
+            display: flex; align-items: center; gap: 3rem; margin-bottom: 4.5rem;
+            opacity: 0; transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        .values-block.visible { opacity: 1; transform: translateY(0); }
+        .values-block.reverse { flex-direction: row-reverse; }
+        .values-image-col, .values-text-col { flex: 1; }
+        .values-image-card {
+            border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #fff;
+            transition: transform var(--transition-normal);
+        }
+        .values-image-card:hover { transform: translateY(-6px); }
+        /* ✅ صورة داخل الكارت */
+        .values-image-card img { width: 100%; height: 320px; object-fit: cover; display: block; }
+        .values-text-col h3 {
+            color: var(--primary-navy); font-size: 1.8rem; margin-bottom: 1.2rem;
+            position: relative; padding-bottom: 0.8rem;
+        }
+        .values-text-col h3::after {
+            content: ''; position: absolute; bottom: 0; right: 0;
+            width: 60px; height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--secondary-blue));
+            border-radius: 2px;
+        }
+        .values-text-col p { font-size: 1.05rem; line-height: 1.8; color: var(--text-dark); }
+        .values-text-col strong { color: var(--primary-navy); }
+
+        /* ==================== خدمات 24 ساعة ==================== */
+        .services-247 { background: linear-gradient(135deg, #0a2a5e 0%, #1e4a8a 50%, #061c3f 100%); }
+        .status-indicator {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(46, 204, 113, 0.15); padding: 0.5rem 1.25rem;
+            border-radius: 50px; border: 1px solid rgba(46, 204, 113, 0.4); margin-bottom: 1rem;
+        }
+        .pulse-dot {
+            width: 10px; height: 10px; background: var(--accent-green); border-radius: 50%;
+            animation: pulseDot 1.5s infinite;
+        }
+        @keyframes pulseDot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .services-grid-247 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .card-247 {
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            padding: 2rem; border-radius: var(--radius-lg); text-align: center;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: transform var(--transition-normal);
+        }
+        .card-247:hover { transform: translateY(-8px); }
+        .card-icon-247 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .card-247 h3 { color: #fff; margin-bottom: 0.5rem; }
+        .card-247 p { color: rgba(255,255,255,0.8); }
+
+        /* ==================== حجز الموعد ==================== */
+        .appointment-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .appointment-form-container, .appointment-info-card {
+            background: #fff; padding: 2rem; border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(10,42,94,0.08);
+        }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-control {
+            padding: 0.85rem 1rem; border: 1px solid var(--border-color);
+            border-radius: var(--radius-md); font-size: 1rem; font-family: inherit;
+        }
+        .form-control:focus { outline: none; border-color: var(--accent-green); box-shadow: 0 0 0 3px rgba(46,204,113,0.1); }
+        .required { color: #dc2626; }
+        .form-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .btn-whatsapp-submit { background: #25D366; color: #fff; }
+        .btn-email-submit { background: var(--secondary-blue); color: #fff; }
+        .contact-info-list { list-style: none; padding: 0; margin-top: 1rem; }
+        .contact-info-list li { padding: 0.7rem 0; border-bottom: 1px solid #eee; }
+        .contact-info-list a { color: var(--secondary-blue); text-decoration: none; font-weight: 600; }
+
+        /* ==================== اتصل بنا والخريطة ==================== */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .contact-cards { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-card {
+            background: #fff; padding: 1.5rem; border-radius: var(--radius-lg);
+            box-shadow: 0 8px 24px rgba(10,42,94,0.06);
+            display: flex; gap: 1rem; align-items: flex-start;
+        }
+        .contact-card-icon { font-size: 1.5rem; }
+        .contact-card h4 { margin: 0 0 0.3rem; color: var(--primary-navy); }
+        .contact-card p { margin: 0; color: var(--text-muted); }
+        .contact-card a { color: var(--secondary-blue); text-decoration: none; }
+        .map-container iframe {
+            border-radius: var(--radius-lg); box-shadow: 0 10px 30px rgba(10,42,94,0.15);
+            min-height: 400px; width: 100%; border: none;
+        }
+        .map-link { display: inline-block; margin-top: 1rem; color: var(--accent-green); font-weight: 700; text-decoration: none; }
+        .map-link:hover { opacity: 0.8; }
+
+        /* ==================== القائمة العلوية ==================== */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+        .brand {
+            display: flex; align-items: center; gap: 0.7rem;
+            text-decoration: none; color: var(--primary-navy); font-weight: 700;
+        }
+        .brand-logo { height: 45px; width: auto; }
+        .nav-links { display: flex; list-style: none; gap: 1.5rem; margin: 0; padding: 0; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+        .nav-links a:hover, .nav-links a.nav-active { color: var(--accent-green); }
+        .nav-badge { background: var(--accent-green); color: #fff; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 10px; margin-right: 0.3rem; }
+        .btn-nav-highlight { background: var(--accent-green); color: #fff !important; padding: 0.5rem 1rem; border-radius: var(--radius-md); }
+        .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
+        .menu-toggle span { width: 25px; height: 3px; background: var(--primary-navy); border-radius: 2px; }
+        main { padding-top: 70px; }
+
+        /* ==================== الفوتر ==================== */
+        .footer { background: #061c3f; color: #fff; padding: 3rem 0 1.5rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-brand img { height: 50px; margin-bottom: 0.5rem; }
+        .footer-social a { color: #ccc; margin-left: 1rem; text-decoration: none; }
+        .footer-social a:hover { color: var(--accent-green); }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: #999; font-size: 0.9rem; }
+        .back-to-top { display: inline-block; margin-top: 1rem; color: var(--accent-green); text-decoration: none; font-weight: 600; }
+
+        /* ==================== استجابة الشاشات الصغيرة ==================== */
+        @media (max-width: 992px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute; top: 100%; right: 0; left: 0; background: #fff;
+                flex-direction: column; padding: 1rem 2rem; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                display: none;
+            }
+            .nav-links.open { display: flex; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .hero { background-attachment: scroll; padding: 6rem 0 5rem; }
+            .hero-title { font-size: 1.7rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .values-block, .values-block.reverse { flex-direction: column; gap: 2rem; }
+            .values-image-card img { height: 240px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <header class="header" id="top">
+        <nav class="navbar container">
+            <a href="index.html" class="brand">
+                <!-- ✅ صورة الشعار -->
+                <img src="logo.jpg" alt="شعار مستشفى الأنهار التخصصي" class="brand-logo">
+                <span><strong>مستشفى الأنهار</strong><small>التخصصي</small></span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-active">الرئيسية</a></li>
+                <li><a href="clinics.html">العيادات والتخصصات</a></li>
+                <li><a href="units.html">الوحدات</a></li>
+                <li><a href="ancillary.html">الوحدات الملحقة</a></li>
+                <li><a href="pr.html">العلاقات العامة والتسويق</a></li>
+                <li><a href="offers.html">العروض <span class="nav-badge">خاص</span></a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="doctors.html">الاستشاريين والطواقم</a></li>
+                <li><a href="#booking" class="btn-nav-highlight">حجز موعد</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- القسم الرئيسي مع صورة الخلفية above.png -->
+        <section class="hero" id="home">
+            <div class="hero-overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content reveal-fade">
+                    <span class="hero-badge">مرحباً بكم في مستشفى الأنهار التخصصي</span>
+                    <h1 class="hero-title">
+                        <span id="typingHeading" class="typing-line"></span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        رعاية طبية متكاملة على مدار الساعة بأحدث التقنيات، وكادر طبي يسعى لتقديم خدمات صحية متميزة لكم ولعائلاتكم.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#booking" class="btn btn-primary">احجز موعدك الآن</a>
+                        <a href="tel:03235270" class="btn btn-outline">اتصل بالاستعلامات</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- لماذا تختارنا -->
+        <section class="features section-padding" id="why-us">
+            <div class="container">
+                <div class="section-header text-center reveal-fade">
+                    <h2>لماذا مستشفى الأنهار التخصصي؟</h2>
+                    <p>نقدم أفضل مستويات الرعاية الصحية المتقدمة الشاملة لجميع أفراد الأسرة</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card reveal-scale">
+                        <div class="feature-icon">🩺</div>
+                        <h3>أحدث الأجهزة الطبية</h3>
+                        <p>تجهيزات تشخيصية وعلاجية حديثة تضمن أعلى درجات الدقة والأمان.</p>
+                    </div>
+                    <div class="feature-card reveal-scale">
+                        <div class="feature-icon">👨‍⚕️</div>
+                        <h3>طاقم طبي متخصص</h3>
+                        <p>نخبة من الاستشاريين والأخصائيين ذوي الكفاءة والخبرة العالية.</p>
+                    </div>
+                    <div class="feature-card reveal-scale">
+                        <div class="feature-icon">⏰</div>
+                        <h3>رعاية على مدار الساعة</h3>
+                        <p>جاهزية واستجابة فورية لكافة الحالات الطارئة والحرجة طوال اليوم.</p>
+                    </div>
+                    <div class="feature-card reveal-scale">
+                        <div class="feature-icon">⭐</div>
+                        <h3>خدمة ذات جودة عالية</h3>
+                        <p>تطبيق أعلى معايير الجودة والسلامة الصحية لضمان راحتكم ورضاكم.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- القيم والرؤية والرسالة مع الصور shar4.png / shar5.png / shar6.png -->
+        <section class="values-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>قيمنا ورؤيتنا ورسالتنا</h2>
+                    <p>المبادئ التي نعمل بها لخدمتكم</p>
+                </div>
+
+                <!-- ✅ الكتلة الأولى: القيم + صورة shar4.png -->
+                <div class="values-block" data-animate="fade-up">
+                    <div class="values-image-col">
+                        <div class="values-image-card">
+                            <img src="shar4.png" alt="قيمنا — مستشفى الأنهار">
+                        </div>
+                    </div>
+                    <div class="values-text-col">
+                        <h3>قيمنا</h3>
+                        <p>نلتزم في مستشفى الأنهار التخصصي بمجموعة من القيم الأساسية التي توجه عملنا اليومي، وفي مقدمتها: <strong>الرحمة، الأمانة، الجودة، الاحترام، والعمل بروح الفريق</strong>. نؤمن بأن رعاية المريض تبدأ من القلب، وتنعكس في كل تفاصيل خدمتنا.</p>
+                    </div>
+                </div>
+
+                <!-- ✅ الكتلة الثانية: الرؤية + صورة shar5.png -->
+                <div class="values-block reverse" data-animate="fade-up">
+                    <div class="values-image-col">
+                        <div class="values-image-card">
+                            <img src="shar5.png" alt="رؤيتنا — مستشفى الأنهار">
+                        </div>
+                    </div>
+                    <div class="values-text-col">
+                        <h3>رؤيتنا</h3>
+                        <p>أن نكون <strong>المستشفى المرجعي الأول</strong> في محافظة الحديدة والمناطق المجاورة، من خلال تقديم رعاية طبية متكاملة بمعايير عالمية، والاستثمار في الكوادر البشرية والتقنيات الحديثة، لنكون الخيار الأول لثقة مرضانا.</p>
+                    </div>
+                </div>
+
+                <!-- ✅ الكتلة الثالثة: الرسالة + صورة shar6.png -->
+                <div class="values-block" data-animate="fade-up">
+                    <div class="values-image-col">
+                        <div class="values-image-card">
+                            <img src="shar6.png" alt="رسالتنا — مستشفى الأنهار">
+                        </div>
+                    </div>
+                    <div class="values-text-col">
+                        <h3>رسالتنا</h3>
+                        <p>تقديم خدمات طبية شاملة وعالية الجودة لجميع المرضى، من خلال كوادر مؤهلة وتقنيات حديثة، مع الالتزام بأعلى معايير السلامة والجودة، والمساهمة في خدمة المجتمع عبر برامج صحية وتوعوية مستدامة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- خدمات 24 ساعة -->
+        <section class="services-247 section-padding" id="services-247">
+            <div class="container">
+                <div class="section-header text-center text-white reveal-fade">
+                    <div class="status-indicator">
+                        <span class="pulse-dot"></span>
+                        <span>نعمل الآن على مدار 24/7</span>
+                    </div>
+                    <h2>خدماتنا على مدار 24 ساعة</h2>
+                    <p>لأن الثانية تفرق. نعمل على مدار الساعة لخدمتك.</p>
+                </div>
+                <div class="services-grid-247">
+                    <div class="card-247 reveal-scale">
+                        <div class="card-icon-247">🚑</div>
+                        <h3>الطوارئ العامة والتوليدية</h3>
+                        <p>فريق طبي جاهز لاستقبال جميع الحالات الطارئة على مدار الساعة.</p>
+                    </div>
+                    <div class="card-247 reveal-scale">
+                        <div class="card-icon-247">🛏️</div>
+                        <h3>الوحدات الحرجة</h3>
+                        <p>العناية المركزة، حديثي الولادة، والعناية التنفسية تعمل 24/7.</p>
+                    </div>
+                    <div class="card-247 reveal-scale">
+                        <div class="card-icon-247">🧪</div>
+                        <h3>المختبر وبنك الدم</h3>
+                        <p>خدمات مخبرية وفحوصات عاجلة في أي وقت.</p>
+                    </div>
+                    <div class="card-247 reveal-scale">
+                        <div class="card-icon-247">💊</div>
+                        <h3>الصيدلية</h3>
+                        <p>صيدلية المستشفى تخدم المرضى على مدار الساعة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- حجز موعد -->
+        <section class="appointment section-padding" id="booking">
+            <div class="container">
+                <div class="appointment-wrapper">
+                    <div class="appointment-form-container reveal-left">
+                        <div class="section-header">
+                            <h2>حجز موعد إلكتروني</h2>
+                            <p>قم بتعبئة البيانات أدناه لحجز موعد وسيتم التواصل معك للتأكيد</p>
+                        </div>
+                        <form id="bookingForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>الاسم الكامل <span class="required">*</span></label>
+                                    <input type="text" id="fullname" class="form-control" placeholder="أدخل اسمك الكامل" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>رقم الهاتف <span class="required">*</span></label>
+                                    <input type="tel" id="phone" class="form-control" placeholder="مثال: 771234567" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>البريد الإلكتروني</label>
+                                    <input type="email" id="email" class="form-control" placeholder="example@mail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>القسم الطبي <span class="required">*</span></label>
+                                    <select id="department" class="form-control" required>
+                                        <option value="" disabled selected>اختر القسم المطلوب</option>
+                                        <option>طب الأطفال وحديثي الولادة</option>
+                                        <option>جراحة المخ والأعصاب والعمود الفقري</option>
+                                        <option>جراحة العظام والمفاصل</option>
+                                        <option>الباطنية والحميات</option>
+                                        <option>جراحة الوجه والفكين</option>
+                                        <option>الجراحة العامة والأوعية الدموية</option>
+                                        <option>النساء والولادة</option>
+                                        <option>طب وجراحة الأسنان</option>
+                                        <option>قسم الطوارئ 24/7</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>التاريخ المطلوب <span class="required">*</span></label>
+                                    <input type="date" id="booking-date" class="form-control" required>
+                                </div>
+                                <div class="form-group" style="background: #f0f8fc; padding: 0.5rem; border-radius: 8px; border: 1px solid #0a2a5e;">
+                                    <label style="color: #0a2a5e; font-weight: 700;">الفترة <span class="required">*</span></label>
+                                    <select id="booking-period" class="form-control" required>
+                                        <option value="" disabled selected>اختر الفترة</option>
+                                        <option>صباحية</option>
+                                        <option>مسائية</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" id="btnSendWhatsApp" class="btn btn-whatsapp-submit">💬 إرسال عبر واتساب</button>
+                                <button type="button" class="btn btn-email-submit">✉️ إرسال بالإيميل</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="appointment-info-card reveal-left">
+                        <h3>معلومات الحجز والاستعلامات</h3>
+                        <p>يمكنكم التواصل المباشر مع موظفي الاستقبال:</p>
+                        <ul class="contact-info-list">
+                            <li><strong>📞 الهواتف الثابتة:</strong> <a href="tel:03235270">03 235270</a> – <a href="tel:03235271">235271</a> – <a href="tel:03235272">235272</a> – <a href="tel:03235273">235273</a></li>
+                            <li><strong>📱 الموبايل والواتساب:</strong> <a href="tel:783395352">783395352</a> – <a href="tel:735539107">735539107</a></li>
+                            <li><strong>💬 واتساب مباشر:</strong> <a href="https://wa.me/967771422070" target="_blank">00967771422070</a></li>
+                            <li><strong>📧 البريد:</strong> <a href="mailto:ammaralqhwi20@gmail.com">ammaralqhwi20@gmail.com</a></li>
+                            <li><strong>📍 العنوان:</strong> الحديدة - شارع صنعاء</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- اتصل بنا والخريطة -->
+        <section class="contact section-padding" id="contact">
+            <div class="container">
+                <div class="section-header text-center reveal-fade">
+                    <h2>اتصل بنا</h2>
+                    <p>نحن هنا لخدمتكم والإجابة على كافة استفساراتكم على مدار الساعة</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-cards">
+                        <div class="contact-card reveal-left">
+                            <div class="contact-card-icon">📍</div>
+                            <div><h4>العنوان الرئيسي</h4><p>الحديدة - شارع صنعاء</p></div>
+                        </div>
+                        <div class="contact-card reveal-left">
+                            <div class="contact-card-icon">☎️</div>
+                            <div><h4>أرقام الاستعلامات</h4><p><a href="tel:03235270">03 235270</a> - <a href="tel:03235271">235271</a> - <a href="tel:03235272">235272</a> - <a href="tel:03235273">235273</a></p></div>
+                        </div>
+                        <div class="contact-card reveal-left">
+                            <div class="contact-card-icon">📱</div>
+                            <div><h4>الموبايل والواتساب</h4><p><a href="tel:783395352">783395352</a> - <a href="tel:735539107">735539107</a></p></div>
+                        </div>
+                        <div class="contact-card reveal-left">
+                            <div class="contact-card-icon">🏥</div>
+                            <div><h4>الإدارة والمختبر</h4><p>الإدارة: <a href="tel:03235273">235273</a> | المختبر: <a href="tel:03226277">226277</a></p></div>
+                        </div>
+                    </div>
+                    <div class="map-container reveal-scale">
+                        <iframe 
+                            title="موقع المستشفى"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3848.5678234123!2d42.95!3d14.80!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDQ4JzAwLjAiTiA0MsKwNTcnMDAuMCJF!5e0!3m2!1sar!2s!4v1600000000000!5m2!1sar!2s"
+                            height="400" allowfullscreen loading="lazy"></iframe>
+                        <a href="https://maps.app.goo.gl/R9e6xDFfBd6soqs26" target="_blank" class="map-link">📍 فتح الموقع في خرائط جوجل ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <!-- ✅ صورة الشعار في الفوتر -->
+                <img src="logo.jpg" alt="شعار المستشفى">
+                <h3>مستشفى الأنهار التخصصي</h3>
+                <p>صحتكم مسؤوليتنا ❤️</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/profile.php?id=61565589033008" target="_blank">فيسبوك</a>
+                <a href="https://youtube.com" target="_blank">يوتيوب</a>
+                <a href="https://instagram.com" target="_blank">إنستغرام</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 مستشفى الأنهار التخصصي - جميع الحقوق محفوظة.</p>
+            <p>تصميم: د. عمار القحوي</p>
+            <a href="#top" class="back-to-top">العودة للأعلى ↑</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // تأثير الكتابة المتحركة
+            const headingText = "مستشفى الأنهار التخصصي.. صحتكم مسؤوليتنا";
+            const headingEl = document.getElementById('typingHeading');
+            let charIndex = 0;
+            function typeHeading() {
+                if (charIndex < headingText.length) {
+                    headingEl.textContent += headingText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeHeading, 100);
+                }
+            }
+            setTimeout(typeHeading, 400);
+
+            // تأثيرات الظهور
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.reveal-fade, .reveal-left, .reveal-scale, [data-animate]').forEach(el => observer.observe(el));
+
+            // القائمة الجوالة
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            menuToggle?.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+            });
+
+            // تمرير سلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        navLinks?.classList.remove('open');
+                    }
+                });
+            });
+
+            // إرسال عبر واتساب
+            document.getElementById('btnSendWhatsApp')?.addEventListener('click', () => {
+                const fullname = document.getElementById('fullname').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const department = document.getElementById('department').value;
+                const date = document.getElementById('booking-date').value;
+                const period = document.getElementById('booking-period').value;
+                if (!fullname || !phone || !department || !date || !period) {
+                    alert('يرجى تعبئة كافة الحقول المطلوبة أولاً (*).');
+                    return;
+                }
+                const msg = `📋 طلب حجز موعد جديد
+━━━━━━━━━━━━━━━━━━━━
+👤 الاسم: ${fullname}
+📱 الهاتف: ${phone}
+🏥 القسم: ${department}
+📅 التاريخ: ${date}
+⏰ الفترة: ${period}
+━━━━━━━━━━━━━━━━━━━━
+يرجى تأكيد الحجز وشكراً لكم.`;
+                window.open(`https://wa.me/967771422070?text=${encodeURIComponent(msg)}`, '_blank');
+                alert('✅ تم إنشاء الطلب! سيتم توجيهك إلى واتساب.');
+            });
+        });
+    </script>
+</body>
+</html>

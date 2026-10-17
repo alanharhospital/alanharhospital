@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a2a5e">
+    <meta name="description" content="بوابة التنسيق الطبي والعلاقات العامة بمستشفى الأنهار التخصصي - متابعة الإحالات والتنسيق المباشر للشركات والأطباء.">
+    <title>العلاقات العامة والتسويق | مستشفى الأنهار التخصصي</title>
+    
+    <!-- خط تجوال العربي مع معالجة مشاكل التحميل -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    
+    <!-- ملف التنسيقات الموحد -->
+    <link rel="stylesheet" href="style.css?v=9">
+    
+    <style>
+        /* ==================== المتغيرات الأساسية ==================== */
+        :root {
+            --primary-navy: #0a2a5e;
+            --secondary-blue: #1e4a8a;
+            --accent-green: #2ecc71;
+            --bg-light: #f8f9fa;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition-normal: 0.3s ease;
+            --border-color: #d1d5db;
+        }
+        /* ==================== خلفية القسم الرئيسي ==================== */
+        .pr-hero {
+            background: linear-gradient(135deg, #0a2a5e 0%, #1e4a8a 50%, #061c3f 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 4.5rem 0 5.5rem;
+            color: #ffffff;
+        }
+        /* جزيئات خلفية متحركة بنقية CSS فقط */
+        .pr-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(46, 204, 113, 0.08) 10%, transparent 20%),
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 15%, transparent 30%);
+            background-size: 80px 80px;
+            animation: floatParticles 25s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes floatParticles {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(40px, 40px) rotate(360deg); }
+        }
+        /* ==================== شعار قسم العلاقات العامة ==================== */
+        .pr-logo-badge {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(46, 204, 113, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 25px rgba(46, 204, 113, 0.3),
+                inset 0 0 20px rgba(46, 204, 113, 0.1);
+            transition: transform var(--transition-normal);
+            overflow: hidden;
+        }
+        .pr-logo-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .pr-logo-badge:hover {
+            transform: scale(1.08) rotate(3deg);
+        }
+        /* ==================== تأثير الكتابة المتحركة للشعار ==================== */
+        .typing-slogan {
+            display: inline-block;
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.15rem;
+            border-left: 2px solid var(--accent-green);
+            padding-left: 8px;
+            border-right: 2px solid var(--accent-green);
+            padding-right: 4px;
+            animation: blinkCursor 0.8s infinite;
+        }
+        @keyframes blinkCursor {
+            0%, 100% { border-right-color: var(--accent-green); }
+            50% { border-right-color: transparent; }
+        }
+        /* ==================== كروت الزجاج المزجج ==================== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(10, 42, 94, 0.08);
+            transition: all var(--transition-normal);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(10, 42, 94, 0.14);
+            border-color: var(--accent-green);
+        }
+        /* ==================== شارة الحالة المباشرة ==================== */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(46, 204, 113, 0.15);
+            color: var(--accent-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            border: 1px solid var(--accent-green);
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            animation: pulseDot 1.5s infinite;
+        }
+        @keyframes pulseDot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        /* ==================== تخطيط عام ==================== */
+        .section-padding {
+            padding: 4rem 0;
+        }
+        .section-header {
+            margin-bottom: 2rem;
+        }
+        .section-header.text-center {
+            text-align: center;
+        }
+        .section-header h2 {
+            color: var(--primary-navy);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .teasers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .teaser-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+        }
+        .teaser-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(10, 42, 94, 0.1);
+            border-color: var(--accent-green);
+        }
+        .link-arrow {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.8rem;
+            transition: transform var(--transition-normal);
+        }
+        .link-arrow:hover {
+            transform: translateX(-4px);
+        }
+        .appointment-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .appointment-form-container {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(10, 42, 94, 0.08);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-group[style*="span 2"] {
+            grid-column: span 2;
+        }
+        .form-control {
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: border-color var(--transition-normal);
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+        }
+        .required {
+            color: #dc2626;
+        }
+        .btn, .btn-primary, .btn-outline, .btn-whatsapp-submit, .btn-email-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .btn-outline:hover {
+            border-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .btn-whatsapp-submit {
+            background-color: #25D366;
+            color: #ffffff;
+        }
+        .btn-whatsapp-submit:hover {
+            background-color: #1fb85c;
+            transform: translateY(-2px);
+        }
+        .btn-email-submit {
+            background-color: var(--secondary-blue);
+            color: #ffffff;
+        }
+        .btn-email-submit:hover {
+            background-color: #183a70;
+            transform: translateY(-2px);
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .hero-container {
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        /* دعم تقليل الحركة لتسهيل الوصول */
+        @media (prefers-reduced-motion: reduce) {
+            .pr-hero::before, .typing-slogan, .pulse-dot,
+            .glass-card, .pr-logo-badge, .btn:hover {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+        /* استجابة للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+            }
+            .form-group[style*="span 2"] {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==============================================
+                    القائمة العلوية الموحدة
+    =============================================== -->
+    <header class="header" id="top">
+        <nav class="navbar container" aria-label="القائمة الرئيسية">
+            <a href="index.html" class="brand">
+                <img src="logo.jpg" alt="شعار مستشفى الأنهار التخصصي" class="brand-logo">
+                <span><strong>مستشفى الأنهار</strong><small>التخصصي</small></span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="clinics.html">العيادات والتخصصات</a></li>
+                <li><a href="units.html">الوحدات</a></li>
+                <li><a href="ancillary.html">الوحدات الملحقة</a></li>
+                <li><a href="pr.html" class="nav-active">العلاقات العامة والتسويق</a></li>
+                <li><a href="offers.html" class="nav-offer-link">العروض <span class="nav-badge">خاص</span></a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="doctors.html">الاستشاريين والطواقم</a></li>
+                <li><a href="index.html#booking" class="btn-nav-highlight">حجز موعد</a></li>
+                <li><a href="index.html#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ==============================================
+            القسم أ: شعار وقسم التعريف الرئيسي
+    =============================================== -->
+    <section class="pr-hero">
+        <div class="container hero-container">
+            <!-- ✅ الشعار المخصص للصفحة - تم إضافة صورتك هنا -->
+            <div class="pr-logo-badge" title="شعار العلاقات العامة والتسويق">
+                <img src="shar3.png" alt="شعار العلاقات العامة">
+            </div>
+            
+            <h1 class="hero-title">بوابة التنسيق الطبي والعلاقات العامة</h1>
+            <p class="hero-subtitle">نربطكم بأحدث المستجدات الطبية لحظياً. معاً، نقدم رعاية أفضل لمرضانا.</p>
+            
+            <!-- الشعار المتحرك بتأثير الكتابة -->
+            <div style="margin-bottom: 2rem;">
+                <span class="typing-slogan" id="typingText"></span>
+            </div>
+            <!-- أزرار الإجراء السريع -->
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="#referral-form" class="btn btn-primary">أرسل إحالة الآن</a>
+                <a href="#contact-direct" class="btn btn-outline">تواصل معنا مباشرة</a>
+            </div>
+        </div>
+    </section>
+    <main class="section-padding">
+        <div class="container">
+            <!-- ==============================================
+                    القسم ب: لماذا تختار التنسيق معنا؟
+            =============================================== -->
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header text-center">
+                    <h2>لماذا تختار التنسيق معنا؟</h2>
+                    <p>منظومة بروتوكولية متكاملة مخصصة لخدمة الأطباء المحوّلين والشركات المتعاقدة</p>
+                </div>
+                
+                <div class="teasers-grid">
+                    <!-- الكارت الأول: استجابة فورية -->
+                    <div class="glass-card">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" style="margin-bottom: 1rem;">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <h3 style="color: var(--primary-navy); margin-bottom: 0.75rem; font-size: 1.2rem;">استجابة فورية</h3>
+                        <p style="color: var(--text-muted); line-height: 1.7;">نرد على استفساراتكم وإحالاتكم الطارئة والروتينية خلال دقائق معدودة.</p>
+                    </div>
+                    <!-- الكارت الثاني: متابعة مباشرة -->
+                    <div class="glass-card">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" style="margin-bottom: 1rem;">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        <h3 style="color: var(--primary-navy); margin-bottom: 0.75rem; font-size: 1.2rem;">متابعة مباشرة</h3>
+                        <p style="color: var(--text-muted); line-height: 1.7;">تحديثات مستمرة وشفافة عن حالة المريض المحوّل وخطته العلاجية.</p>
+                    </div>
+                    <!-- الكارت الثالث: تنسيق كامل -->
+                    <div class="glass-card">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" style="margin-bottom: 1rem;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <h3 style="color: var(--primary-navy); margin-bottom: 0.75rem; font-size: 1.2rem;">تنسيق كامل</h3>
+                        <p style="color: var(--text-muted); line-height: 1.7;">من لحظة الاستقبال الأولي وحتى الخروج والتعافي، نحن معكم خطوة بخطوة.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- ==============================================
+                    القسم ج: تواصل مباشر مع الإدارة
+            =============================================== -->
+            <section id="contact-direct" style="margin-bottom: 4rem;">
+                <div class="section-header text-center">
+                    <h2>تواصل مباشر مع مدير العلاقات العامة والتسويق</h2>
+                    <p>خطوط اتصال واستجابة سريعة على مدار الساعة لخدمتكم والتنسيق معكم</p>
+                </div>
+                <div class="appointment-wrapper">
+                    <!-- الكارت الأول: مدير العلاقات -->
+                    <div class="glass-card" style="border-top: 4px solid var(--accent-green);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="color: var(--primary-navy); font-size: 1.2rem; margin: 0;">مدير العلاقات العامة والتسويق</h3>
+                            <span class="live-badge">
+                                <span class="pulse-dot"></span> متاح الآن
+                            </span>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 1.25rem;">للتنسيق الجراحي المباشر، إحالة الحالات الحرجة، والتعاقدات المؤسسية والشركات:</p>
+                        
+                        <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 1.5rem; text-align: center; direction: ltr;">
+                            00967 771 422 070
+                        </div>
+                        
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <a href="https://wa.me/967771422070" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-submit" style="font-size: 0.9rem; padding: 0.65rem 1rem;">
+                                💬 واتساب
+                            </a>
+                            <a href="tel:0096771422070" class="btn btn-email-submit" style="font-size: 0.9rem; padding: 0.65rem 1rem;">
+                                📞 اتصال مباشر
+                            </a>
+                        </div>
+                    </div>
+                    <!-- الكارت الثاني: أرقام المستشفى -->
+                    <div class="glass-card" style="border-top: 4px solid var(--secondary-blue);">
+                        <h3 style="color: var(--primary-navy); font-size: 1.2rem; margin-bottom: 1rem;">أرقام الاستعلامات والمستشفى</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1.25rem;">خطوط الطوارئ والاستعلامات العامة:</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- الرقم الأول -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                                <span style="font-weight: 700; color: var(--primary-navy); direction: ltr;">783 395 352</span>
+                                <div>
+                                    <a href="https://wa.me/967783395352" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 700; margin-left: 8px;">واتساب</a>
+                                    <a href="tel:+967783395352" style="color: var(--secondary-blue); text-decoration: none; font-weight: 700;">اتصال</a>
+                                </div>
+                            </div>
+                            
+                            <!-- الرقم الثاني -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                                <span style="font-weight: 700; color: var(--primary-navy); direction: ltr;">735 539 107</span>
+                                <div>
+                                    <a href="https://wa.me/967735539107" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 700; margin-left: 8px;">واتساب</a>
+                                    <a href="tel:+967735539107" style="color: var(--secondary-blue); text-decoration: none; font-weight: 700;">اتصال</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ==============================================
+                    القسم د: نموذج الإحالة السريع
+            =============================================== -->
+            <section id="referral-form" style="margin-bottom: 4rem;">
+                <div class="appointment-form-container">
+                    <div class="section-header">
+                        <h2>أرسل إحالة طبية جديدة</h2>
+                        <p>املأ البيانات أدناه وسيتم إرسال الإحالة مباشرة إلى مدير العلاقات عبر واتساب</p>
+                    </div>
+                    
+                    <form id="prReferralForm" class="appointment-form">
+                        <div class="form-grid">
+                            <!-- اسم الطبيب المحوّل -->
+                            <div class="form-group">
+                                <label for="doctor_name">اسم الطبيب المحوّل <span class="required">*</span></label>
+                                <input type="text" id="doctor_name" class="form-control" placeholder="د. الاسم الكامل" required>
+                            </div>
+                            
+                            <!-- التخصص -->
+                            <div class="form-group">
+                                <label for="doctor_specialty">التخصص <span class="required">*</span></label>
+                                <input type="text" id="doctor_specialty" class="form-control" placeholder="مثال: جراحة عامة / عظام" required>
+                            </div>
+                            
+                            <!-- اسم المريض -->
+                            <div class="form-group">
+                                <label for="patient_name">اسم المريض <span class="required">*</span></label>
+                                <input type="text" id="patient_name" class="form-control" placeholder="اسم المريض الثلاثي" required>
+                            </div>
+                            
+                            <!-- العمر -->
+                            <div class="form-group">
+                                <label for="patient_age">العمر <span class="required">*</span></label>
+                                <input type="text" id="patient_age" class="form-control" placeholder="مثال: 35 سنة" required>
+                            </div>
+                            
+                            <!-- التشخيص المبدئي -->
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label for="diagnosis">التشخيص المبدئي للحالة <span class="required">*</span></label>
+                                <input type="text" id="diagnosis" class="form-control" placeholder="وصف مقتضب للحالة الصحية" required>
+                            </div>
+                            
+                            <!-- القسم المطلوب -->
+                            <div class="form-group">
+                                <label for="target_dept">القسم المطلوب <span class="required">*</span></label>
+                                <select id="target_dept" class="form-control" required>
+                                    <option value="" disabled selected>اختر القسم المناسب</option>
+                                    <option value="العيادات الخارجية">العيادات الخارجية</option>
+                                    <option value="الوحدات الحرجة">الوحدات الحرجة</option>
+                                    <option value="الطوارئ">قسم الطوارئ</option>
+                                    <option value="الجراحة">العمليات والجراحة</option>
+                                </select>
+                            </div>
+                            
+                            <!-- مستوى الاستعجال -->
+                            <div class="form-group">
+                                <label>مستوى الاستعجال <span class="required">*</span></label>
+                                <div style="display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                                    <label style="font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                                        <input type="radio" name="urgency" value="عادي" checked> عادي
+                                    </label>
+                                    <label style="font-weight: 500; cursor: pointer; color: #d97706; display: flex; align-items: center; gap: 4px;">
+                                        <input type="radio" name="urgency" value="عاجل"> عاجل
+                                    </label>
+                                    <label style="font-weight: 700; cursor: pointer; color: #dc2626; display: flex; align-items: center; gap: 4px;">
+                                        <input type="radio" name="urgency" value="طارئ"> طارئ
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- ملاحظات إضافية -->
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label for="notes">ملاحظات وتوصيات إضافية</label>
+                                <textarea id="notes" class="form-control" rows="3" placeholder="أية ملاحظات خاصة بالفحوصات أو العلاجات المسبقة..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- زر الإرسال -->
+                        <div style="margin-top: 1.5rem; text-align: center;">
+                            <button type="submit" class="btn btn-whatsapp-submit" style="width: 100%; max-width: 400px; padding: 0.9rem;">
+                                💬 إرسال الإحالة الآن عبر واتساب
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- ==============================================
+                    القسم هـ: الشركاء والجهات المتعاونة
+            =============================================== -->
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header text-center">
+                    <h2>شركاؤنا في الرعاية الصحية</h2>
+                    <p>نفخر بالتعاون مع نخبة من الجهات والمؤسسات الطبية</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.25rem;">
+                    <!-- يمكن إضافة شعارات الشركاء هنا -->
+                    <div style="background: #fff; padding: 1.5rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); text-align: center; font-weight: 700; color: var(--text-muted);">
+                        🏢 شريك طبي 1
+                    </div>
+                    <div style="background: #fff; padding: 1.5rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); text-align: center; font-weight: 700; color: var(--text-muted);">
+                        🏛️ شريك مؤسسي 2
+                    </div>
+                    <div style="background: #fff; padding: 1.5rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); text-align: center; font-weight: 700; color: var(--text-muted);">
+                        🛡️ شركة تأمين 3
+                    </div>
+                    <div style="background: #fff; padding: 1.5rem; border-radius: var(--radius-md); border: 1px dashed var(--border-color); text-align: center; font-weight: 700; color: var(--text-muted);">
+                        🤝 جهة داعمة 4
+                    </div>
+                </div>
+            </section>
+            <!-- ==============================================
+                    القسم و: أخبار وأنشطة العلاقات العامة
+            =============================================== -->
+            <section style="margin-bottom: 2rem;">
+                <div class="section-header text-center">
+                    <h2>آخر أنشطة العلاقات العامة</h2>
+                    <p>تابع آخر الفعاليات والأنشطة الطبية والمجتمعية للمستشفى</p>
+                </div>
+                
+                <div class="teasers-grid">
+                    <!-- النشاط الأول -->
+                    <div class="teaser-card">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏕️</div>
+                        <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">إقامة المخيمات الطبية الخيرية والمجانية</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">تنظيم مخيمات طبية لتقديم الخدمات العلاجية والاستشارية مجاناً للمناطق النائية والمحتاجة.</p>
+                        <a href="news.html" class="link-arrow">اقرأ المزيد ←</a>
+                    </div>
+                    
+                    <!-- النشاط الثاني -->
+                    <div class="teaser-card">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎗️</div>
+                        <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">حملات توعوية صحية</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">إطلاق فعاليات التوعية الصحية بالتعاون مع الجهات المختصة لرفع مستوى الوعي لدى أفراد المجتمع.</p>
+                        <a href="offers.html" class="link-arrow">اقرأ المزيد ←</a>
+                    </div>
+                    
+                    <!-- النشاط الثالث -->
+                    <div class="teaser-card">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤝</div>
+                        <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">زيارات ميدانية وتعزيز الشراكات</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">تعزيز أواصر التعاون مع المؤسسات والشركات والأطباء لضمان تقديم أفضل خدمة طبية ممكنة.</p>
+                        <a href="pr.html" class="link-arrow">اقرأ المزيد ←</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- ==============================================
+                    التذييل الموحد للمستشفى
+    =============================================== -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg" alt="شعار المستشفى" class="footer-logo">
+                <div>
+                    <h3>مستشفى الأنهار التخصصي</h3>
+                    <p>صحتكم مسؤوليتنا ❤️</p>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://www.facebook.com/share/184HiWcWcP/" target="_blank" rel="noopener noreferrer">فيسبوك</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">يوتيوب</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">إنستغرام</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 مستشفى الأنهار التخصصي - جميع الحقوق محفوظة.</p>
+                <p class="designer-credit">Designed by Dr. Ammar Al-Qahwi (د. عمار القحوي)</p>
+                <a href="#top" class="back-to-top">العودة للأعلى ↑</a>
+            </div>
+        </div>
+    </footer>
+    <!-- ملف التفاعلية العامة -->
+    <script src="script.js?v=9"></script>
+    <!-- ==============================================
+                    البرمجة النصية الخاصة بالصفحة
+    =============================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ------------------------------
+            // 1. تأثير الكتابة المتحركة للشعار
+            // ------------------------------
+            const sloganText = "نربطكم بأحدث المستجدات الطبية لحظياً";
+            const typingElement = document.getElementById('typingText');
+            let charIndex = 0;
+            function typeSlogan() {
+                if (charIndex < sloganText.length) {
+                    typingElement.textContent += sloganText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeSlogan, 120);
+                }
+            }
+            
+            // تشغيل التأثير مع تأخير بسيط
+            setTimeout(typeSlogan, 500);
+            // ------------------------------
+            // 2. تأثير الظهور التدريجي عند التمرير
+            // ------------------------------
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            };
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            // تطبيق المراقبة على جميع الكروت
+            document.querySelectorAll('.glass-card, .teaser-card').forEach(card => {
+                fadeInObserver.observe(card);
+            });
+            // ------------------------------
+            // 3. تمرير سلس للروابط الداخلية
+            // ------------------------------
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            // ------------------------------
+            // 4. معالجة نموذج الإحالة وإرساله عبر واتساب
+            // ------------------------------
+            const referralForm = document.getElementById('prReferralForm');
+            
+            if (referralForm) {
+                referralForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // قراءة قيم الحقول
+                    const doctorName = document.getElementById('doctor_name').value.trim();
+                    const specialty = document.getElementById('doctor_specialty').value.trim();
+                    const patientName = document.getElementById('patient_name').value.trim();
+                    const age = document.getElementById('patient_age').value.trim();
+                    const diagnosis = document.getElementById('diagnosis').value.trim();
+                    const department = document.getElementById('target_dept').value;
+                    const urgency = document.querySelector('input[name="urgency"]:checked')?.value || 'عادي';
+                    const notes = document.getElementById('notes').value.trim() || 'لا يوجد';
+                    // التحقق من تعبئة جميع الحقول المطلوبة
+                    if (!doctorName || !specialty || !patientName || !age || !diagnosis || !department) {
+                        alert('يرجى تعبئة كافة الحقول المطلوبة المشار إليها بعلامة النجمة (*).');
+                        return;
+                    }
+                    // بناء نص الرسالة المنسق
+                    const message = `🏥 *إحالة طبية جديدة - بوابة العلاقات العامة*
+━━━━━━━━━━━━━━━━━━━━
+👨‍⚕️ *الطبيب المحوّل:* ${doctorName}
+📋 *التخصص:* ${specialty}
+👤 *المريض:* ${patientName}
+🎂 *العمر:* ${age}
+🩺 *التشخيص المبدئي:* ${diagnosis}
+🏥 *القسم المطلوب:* ${department}
+⚠️ *مستوى الاستعجال:* ${urgency}
+📝 *ملاحظات إضافية:* ${notes}
+━━━━━━━━━━━━━━━━━━━━
+في حال وصول الحالة يتم تبليغكم بشكل فوري خلال 15 دقيقة.`;
+                    // رقم واتساب المستلم
+                    const whatsappNumber = '967771422070';
+                    const encodedMessage = encodeURIComponent(message);
+                    const waLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                    // فتح الرابط في نافذة جديدة
+                    window.open(waLink, '_blank');
+                    
+                    // رسالة تأكيد
+                    alert('تم تجهيز بيانات الإحالة بنجاح 📋\\nسيتم توجيهك الآن إلى واتساب...\\n\\nفي حال وصول الحالة يتم تبليغكم بشكل فوري خلال 15 دقيقة.');
+                    
+                    // إعادة تعيين النموذج
+                    referralForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# إعادة توجيه جميع الروابط غير الموجودة إلى الصفحة الرئيسية
+/*    /index.html   200
+
+# لكن، اسمح بفتح صفحات HTML الموجودة
+/clinics.html    /clinics.html    200
+/units.html    /units.html    200
+/doctors.html    /doctors.html    200
+/offers.html    /offers.html    200
+/news.html    /news.html    200
+/ancillary.html    /ancillary.html    200
+/pr.html    /pr.html    200

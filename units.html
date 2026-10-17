@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a2a5e">
+    <meta name="description" content="الوحدات الطبية والتشخيصية بمستشفى الأنهار التخصصي - رعاية صحية حرجة، جراحية، وتشخيصية متكاملة.">
+    <title>الوحدات والأقسام | مستشفى الأنهار التخصصي</title>
+    <!-- خط تجوال العربي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <!-- استدعاء ملف التنسيقات الموحد -->
+    <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+
+    <!-- 1. شريط التنقل العلوي الموحد (10 روابط دقيقة) -->
+    <header class="header" id="top">
+        <nav class="navbar container" aria-label="القائمة الرئيسية">
+            <a href="index.html" class="brand">
+                <img src="logo.jpg" alt="شعار مستشفى الأنهار التخصصي" class="brand-logo">
+                <span>
+                    <strong>مستشفى الأنهار</strong>
+                    <small>التخصصي</small>
+                </span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="clinics.html">العيادات والتخصصات</a></li>
+                <li><a href="units.html" class="nav-active">الوحدات</a></li>
+                <li><a href="ancillary.html">الوحدات الملحقة</a></li>
+                <li><a href="pr.html">العلاقات العامة والتسويق</a></li>
+                <li><a href="offers.html" class="nav-offer-link">العروض <span class="nav-badge">خاص</span></a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="doctors.html">الاستشاريين والطواقم</a></li>
+                <li><a href="index.html#booking" class="btn-nav-highlight">حجز موعد</a></li>
+                <li><a href="index.html#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. عنوان الصفحة المعتمد (Page Heading) -->
+    <section class="page-header section-padding bg-subtle">
+        <div class="container text-center">
+            <h1 class="hero-title" style="color: var(--primary-navy);">الوحدات الطبية والتشخيصية</h1>
+            <p class="section-header p" style="max-width: 800px; margin: 0 auto;">
+                منظومة متكاملة من الوحدات الجراحية، الحرجة، والتشخيصية المجهزة بأحدث التقنيات لخدمتكم ورعايتكم.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. المحتوى الرئيسي لصفحة الوحدات -->
+    <main class="section-padding">
+        <div class="container">
+
+            <!-- صندوق التنسيق الجراحي المعاقد (Callout Box - ABOVE the tabs) -->
+            <div class="units-callout" style="border: 2px solid var(--secondary-blue); background-color: #f0f8fc; padding: 2rem; border-radius: 14px; margin-bottom: 2.5rem; text-align: center; box-shadow: var(--shadow-sm);">
+                <h3 style="color: var(--primary-navy); font-size: 1.35rem; margin-bottom: 0.85rem; font-weight: 800;">
+                    نفخر في مستشفى الأنهار التخصصي بتعاقدنا مع نخبة من الاستشاريين الجراحيين في جميع التخصصات الجراحية.
+                </h3>
+                <p style="font-size: 1.08rem; color: var(--text-main); line-height: 1.8; margin-bottom: 1.5rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    نستقبل الحالات الخارجية أو الحالات التي تتابع لدى أخصائي خارجي، ويمكن التنسيق معنا مباشرة لإجراء العمليات الجراحية في مستشفانا.
+                </p>
+                <a href="index.html#booking" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 2rem;">
+                    للتنسيق والحجز اضغط هنا
+                </a>
+            </div>
+
+            <!-- التبويبات السبعة التفاعلية (7 Accessible Tabs) -->
+            <div class="tabs-container">
+                <!-- شريط أزرار التبويبات -->
+                <div class="tabs-navigation" role="tablist" aria-label="أقسام ووحدات المستشفى">
+                    <button class="tab-btn active" data-tab="surgical" id="tab-surgical" role="tab" aria-selected="true" aria-controls="panel-surgical">الوحدات الجراحية</button>
+                    <button class="tab-btn" data-tab="critical" id="tab-critical" role="tab" aria-selected="false" aria-controls="panel-critical">الوحدات الحرجة</button>
+                    <button class="tab-btn" data-tab="inpatient" id="tab-inpatient" role="tab" aria-selected="false" aria-controls="panel-inpatient">أقسام الرقود</button>
+                    <button class="tab-btn" data-tab="emergency" id="tab-emergency" role="tab" aria-selected="false" aria-controls="panel-emergency">أقسام الطوارئ</button>
+                    <button class="tab-btn" data-tab="diagnostic" id="tab-diagnostic" role="tab" aria-selected="false" aria-controls="panel-diagnostic">الوحدات التشخيصية</button>
+                    <button class="tab-btn" data-tab="lab" id="tab-lab" role="tab" aria-selected="false" aria-controls="panel-lab">المختبر وبنك الدم</button>
+                    <button class="tab-btn" data-tab="pharmacy" id="tab-pharmacy" role="tab" aria-selected="false" aria-controls="panel-pharmacy">الصيدلية</button>
+                </div>
+
+                <!-- Tab 1: الوحدات الجراحية (Surgical Units) -->
+                <div class="tab-panel active" id="panel-surgical" role="tabpanel" aria-labelledby="tab-surgical">
+                    <div class="units-grid">
+                        <div class="unit-item-card"><span>🧠</span> <h4>جراحة المخ والأعصاب وجراحة العمود الفقري</h4></div>
+                        <div class="unit-item-card"><span>🦴</span> <h4>جراحة العظام والمفاصل</h4></div>
+                        <div class="unit-item-card"><span>🩺</span> <h4>الجراحة العامة</h4></div>
+                        <div class="unit-item-card"><span>🩺</span> <h4>جراحة الأوعية الدموية</h4></div>
+                        <div class="unit-item-card"><span>👶</span> <h4>الجراحة النسائية (مع كادر نسائي متخصص)</h4></div>
+                        <div class="unit-item-card"><span>🧪</span> <h4>جراحة الكلى والمسالك البولية</h4></div>
+                        <div class="unit-item-card"><span>✨</span> <h4>الجراحة التجميلية</h4></div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: الوحدات الحرجة (Critical Care Units) -->
+                <div class="tab-panel" id="panel-critical" role="tabpanel" aria-labelledby="tab-critical">
+                    <div class="units-grid">
+                        <div class="unit-item-card"><span>🛏️</span> <h4>وحدة العناية المركزة</h4></div>
+                        <div class="unit-item-card"><span>🧸</span> <h4>وحدة العناية المركزة أطفال</h4></div>
+                        <div class="unit-item-card"><span>🛡️</span> <h4>وحدة العناية التنفسية وعناية العزل</h4></div>
+                        <div class="unit-item-card"><span>🍼</span> <h4>وحدة حديثي الولادة ورعاية الخدج</h4></div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: أقسام الرقود (Inpatient Departments) -->
+                <div class="tab-panel" id="panel-inpatient" role="tabpanel" aria-labelledby="tab-inpatient">
+                    <div class="units-grid">
+                        <div class="unit-item-card"><span>🏥</span> <h4>رقود عام</h4></div>
+                        <div class="unit-item-card"><span>⭐</span> <h4>رقود خاص</h4></div>
+                        <div class="unit-item-card"><span>👑</span> <h4>رقود VIP</h4></div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: أقسام الطوارئ (Emergency Departments) -->
+                <div class="tab-panel" id="panel-emergency" role="tabpanel" aria-labelledby="tab-emergency">
+                    <div class="units-grid">
+                        <div class="unit-item-card"><span>🚑</span> <h4>الطوارئ العامة</h4></div>
+                        <div class="unit-item-card"><span>🤰</span> <h4>الطوارئ التوليدية</h4></div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: الوحدات التشخيصية (Diagnostic Units - CT & X-Ray ONLY, NO MRI) -->
+                <div class="tab-panel" id="panel-diagnostic" role="tabpanel" aria-labelledby="tab-diagnostic">
+                    <div class="units-grid">
+                        <div class="unit-item-card"><span>🔬</span> <h4>الأشعة (CT و X-Ray)</h4></div>
+                        <div class="unit-item-card"><span>📡</span> <h4>الموجات فوق الصوتية</h4></div>
+                        <div class="unit-item-card"><span>❤️</span> <h4>إيكو القلبية</h4></div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: المختبر وبنك الدم (Lab & Blood Bank) -->
+                <div class="tab-panel" id="panel-lab" role="tabpanel" aria-labelledby="tab-lab">
+                    <div class="units-grid">
+                        <div class="unit-item-card"><span>🧪</span> <h4>المختبرات</h4></div>
+                        <div class="unit-item-card"><span>🩸</span> <h4>بنك الدم</h4></div>
+                    </div>
+                </div>
+
+                <!-- Tab 7: الصيدلية (Pharmacy) -->
+                <div class="tab-panel" id="panel-pharmacy" role="tabpanel" aria-labelledby="tab-pharmacy">
+                    <div class="units-grid">
+                        <div class="unit-item-card" style="grid-column: 1 / -1;">
+                            <span style="font-size: 2rem;">💊</span>
+                            <div>
+                                <h4>الصيدلية</h4>
+                                <p style="color: #666; font-size: 0.95rem; margin-top: 0.25rem;">
+                                    صيدلية المستشفى تخدم المرضى والمترددين على مدار 24 ساعة لتوفير الأدوية والمستلزمات الطبية.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- شريط التواصل الموحد الجديد لصفحة الوحدات (NEW Contact Banner) -->
+            <div class="units-contact-banner" style="margin-top: 3rem; background-color: #e6f3fa; border: 1px solid #0876b9; border-radius: 12px; padding: 1.5rem; display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 1.25rem;">
+                <!-- رابط الواتساب بطلاء وتصميم متناسق -->
+                <a href="https://wa.me/967771422070" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 0.65rem; text-decoration: none; color: #0a2a5e; font-weight: 700; font-size: 1.02rem; background-color: #ffffff; padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid #2ecc71; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <span style="font-size: 1.4rem;">💬</span>
+                    <span>تواصل معنا عبر واتساب للحجز والاستفسار</span>
+                </a>
+                
+                <!-- رابط الاتصال المباشر -->
+                <a href="tel:00967771422070" style="display: flex; align-items: center; gap: 0.65rem; text-decoration: none; color: #ffffff; font-weight: 700; font-size: 1.02rem; background-color: #0a2a5e; padding: 0.75rem 1.25rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <span style="font-size: 1.4rem;">📞</span>
+                    <span>اتصل بنا مباشرة: 00967771422070</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 4. الترويسة السفلية الموحدة (Footer) -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg" alt="شعار المستشفى" class="footer-logo">
+                <div>
+                    <h3>مستشفى الأنهار التخصصي</h3>
+                    <p>صحتكم مسؤوليتنا ❤️</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/share/184HiWcWcP/" target="_blank" rel="noopener noreferrer">فيسبوك</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">يوتيوب</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">إنستغرام</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 مستشفى الأنهار التخصصي - جميع الحقوق محفوظة.</p>
+                <p class="designer-credit">Designed by Dr. Ammar Al-Qahwi (د. عمار القحوي)</p>
+                <a href="#top" class="back-to-top">العودة للأعلى ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=7"></script>
+</body>
+</html>

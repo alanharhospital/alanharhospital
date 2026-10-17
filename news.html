@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a2a5e">
+    <meta name="description" content="أحدث الأخبار والإنجازات الطبية بمستشفى الأنهار التخصصي بالحديدة.">
+    <title>الأخبار والإنجازات الطبية | مستشفى الأنهار التخصصي</title>
+    <!-- خط تجوال العربي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <!-- استدعاء ملف التنسيقات الموحد -->
+    <link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+
+    <!-- 1. القائمة العلوية الموحدة (10 روابط) -->
+    <header class="header" id="top">
+        <nav class="navbar container" aria-label="القائمة الرئيسية">
+            <a href="index.html" class="brand">
+                <img src="logo.jpg" alt="شعار مستشفى الأنهار التخصصي" class="brand-logo">
+                <span>
+                    <strong>مستشفى الأنهار</strong>
+                    <small>التخصصي</small>
+                </span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="clinics.html">العيادات والتخصصات</a></li>
+                <li><a href="units.html">الوحدات</a></li>
+                <li><a href="ancillary.html">الوحدات الملحقة</a></li>
+                <li><a href="pr.html">العلاقات العامة والتسويق</a></li>
+                <li><a href="offers.html" class="nav-offer-link">العروض <span class="nav-badge">خاص</span></a></li>
+                <li><a href="news.html" class="nav-active">الأخبار</a></li>
+                <li><a href="doctors.html">الاستشاريون والطواقم</a></li>
+                <li><a href="index.html#appointment" class="btn-nav-highlight">حجز موعد</a></li>
+                <li><a href="index.html#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. عنوان الصفحة -->
+    <section class="page-header section-padding bg-subtle">
+        <div class="container text-center">
+            <h1 class="hero-title" style="color: var(--primary-navy);">الأخبار والإنجازات الطبية</h1>
+            <p class="section-header p" style="max-width: 800px; margin: 0 auto;">
+                تابعوا أحدث النجاحات الطبية والعمليات النوعية التي تُجرى بنجاح بأيدي طاقمنا المتخصص.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. المقال الطبي الأصلي ورابط الفيسبوك -->
+    <main class="section-padding">
+        <div class="container">
+            
+            <article class="appointment-form-container" style="max-width: 900px; margin: 0 auto;">
+                <span class="hero-badge">إنجاز طبي نوعي</span>
+                <h2 style="color: var(--primary-navy); margin: 0.75rem 0 1rem; font-size: 1.8rem;">
+                    نجاح عملية استخراج جسم غريب من طفل في مستشفى الأنهار التخصصي
+                </h2>
+                
+                <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-main); margin-bottom: 1.25rem;">
+                    في إنجاز طبي جديد يضاف إلى سجل النجاحات الطبية لمستشفى الأنهار التخصصي بمحافظة الحديدة، استقبل فريق الطوارئ والعمليات حالة طفل يعاني من انسداد وحالة حادة إثر ابتلاع جسم غريب.
+                </p>
+
+                <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-main); margin-bottom: 1.5rem;">
+                    وبفضل الجاهزية العالية والسرعة والدقة للكادر الطبي المتخصص والتجهيزات الحديثة بالمستشفى، تمت التدخلات الفورية بنجاح تام وتم استخراج الجسم الغريب واستقرار حالة الطفل وتماثله للشفاء الكامل ولله الحمد.
+                </p>
+
+                <!-- زر الفيسبوك المباشر الرسمي المزود بالـ SVG -->
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <a href="https://www.facebook.com/share/184HiWcWcP/" target="_blank" rel="noopener noreferrer" class="btn" style="background-color: #1877F2; color: #ffffff; gap: 0.5rem;">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                        <span>للمزيد من التفاصيل اضغط لمشاهدة الخبر على فيسبوك ↗</span>
+                    </a>
+                    <span style="color: var(--accent-green); font-weight: 700; font-size: 0.9rem;">مستشفى الأنهار التخصصي - صحتكم مسؤوليتنا ❤️</span>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- 4. الترويسة السفلية الموحدة (Footer) -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg" alt="شعار المستشفى" class="footer-logo">
+                <div>
+                    <h3>مستشفى الأنهار التخصصي</h3>
+                    <p>صحتكم مسؤوليتنا ❤️</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/share/184HiWcWcP/" target="_blank" rel="noopener noreferrer">فيسبوك</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">يوتيوب</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">إنستغرام</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 مستشفى الأنهار التخصصي - جميع الحقوق محفوظة.</p>
+                <p class="designer-credit">Designed by Dr. Ammar Al-Qahwi (د. عمار القحوي)</p>
+                <a href="#top" class="back-to-top">العودة للأعلى ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/clinics</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/units</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/ancillary</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/pr</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/offers</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/news</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://alanhar-specialized-hospital.netlify.app/doctors</loc>
+       <lastmod>2026-10-16T03:55:12+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+</urlset>
