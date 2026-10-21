@@ -901,3 +901,39 @@ img {
         grid-template-columns: 1fr !important;
     }
 }
+/* ==================== الحل النهائي والقاطع (تثبيت الصفحة وإطفاء الإضاءة) ==================== */
+
+/* 1. منع التمرير الأفقي نهائياً وبقوة */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 2. إيقاف ALL الحركات والانتقالات في الموقع بالكامل */
+*, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* 3. إخفاء "الإضاءة" والجزيئات المتحركة في خلفية الـ Hero نهائياً */
+.hero::before {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* 4. التأكد من أن الجزيئات لا تسبب أي تمدد للصفحة */
+.hero {
+    overflow: hidden !important;
+    width: 100% !important;
+}
+
+/* 5. إظهار العناصر فوراً (لإيقاف تأثير الظهور التدريجي) */
+.reveal-fade, .reveal-left, .reveal-scale, [data-animate] {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
