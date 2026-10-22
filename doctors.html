@@ -3,152 +3,1366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a2a5e">
-    <meta name="description" content="الاستشاريون والطواقم الطبية بمستشفى الأنهار التخصصي - نخبة من أفضل الأطباء.">
-    <title>الاستشاريون والطواقم | مستشفى الأنهار التخصصي</title>
-    <!-- خط تجوال العربي -->
+    <title>الاستشاريين والطواقم | مستشفى الأنهار التخصصي</title>
+    <meta name="description" content="دليل الأطباء والاستشاريين بمستشفى الأنهار التخصصي بالحديدة - تعرف على أطبائنا وتخصصاتهم والخدمات والحالات التي يناظرونها.">
+    
+    <!-- الخطوط المعتمدة في الموقع -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <!-- أيقونة الموقع -->
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
-    <!-- استدعاء ملف التنسيقات الموحد -->
-    <link rel="stylesheet" href="style.css?v=4">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ملف CSS الرئيسي للموقع -->
+    <link rel="stylesheet" href="style.css">
 
-    <!-- 1. القائمة العلوية الموحدة (10 روابط) -->
-    <header class="header" id="top">
-        <nav class="navbar container" aria-label="القائمة الرئيسية">
-            <a href="index.html" class="brand">
-                <img src="logo.jpg" alt="شعار مستشفى الأنهار التخصصي" class="brand-logo">
-                <span>
-                    <strong>مستشفى الأنهار</strong>
-                    <small>التخصصي</small>
-                </span>
+    <style>
+        :root {
+            --anhar-navy: #0f3460;
+            --anhar-dark: #0a2240;
+            --anhar-footer-bg: #142247;
+            --anhar-green: #40c057;
+            --anhar-green-dark: #2f9e44;
+            --anhar-bg-light: #f8fafc;
+            --anhar-border: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- الهيدر وسرويسة الموقع الرسمية --- */
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--anhar-border);
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name-main {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--anhar-navy);
+            line-height: 1.1;
+        }
+
+        .brand-name-sub {
+            font-size: 0.85rem;
+            color: var(--anhar-green);
+            font-weight: 700;
+        }
+
+        /* القائمة العلوية */
+        .main-navbar {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list-menu li a {
+            text-decoration: none;
+            color: var(--anhar-navy);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-list-menu li a:hover,
+        .nav-list-menu li a.active {
+            color: var(--anhar-green);
+        }
+
+        .badge-special {
+            background-color: var(--anhar-green);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .btn-header-appointment {
+            background-color: var(--anhar-green);
+            color: #ffffff !important;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-weight: 700 !important;
+            transition: background 0.2s ease !important;
+        }
+
+        .btn-header-appointment:hover {
+            background-color: var(--anhar-green-dark);
+        }
+
+        .btn-header-contact {
+            color: var(--anhar-green) !important;
+            font-weight: 700;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--anhar-navy);
+            cursor: pointer;
+        }
+
+        /* --- واجهة المحتوى الرئيسي للأطباء --- */
+        .page-hero-header {
+            background: linear-gradient(135deg, var(--anhar-dark) 0%, var(--anhar-navy) 100%);
+            color: #ffffff;
+            padding: 50px 20px 70px;
+            text-align: center;
+        }
+
+        .page-hero-header h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .page-hero-header p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .doctors-filter-wrapper {
+            max-width: 1200px;
+            margin: -30px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .doctors-filter-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 10px 25px rgba(15, 52, 96, 0.08);
+            border: 1px solid var(--anhar-border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-input-group {
+            flex: 1 1 300px;
+            position: relative;
+        }
+
+        .search-input-group input {
+            width: 100%;
+            padding: 10px 38px 10px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--anhar-border);
+            background-color: #f1f5f9;
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+
+        .search-input-group input:focus {
+            outline: none;
+            background-color: #ffffff;
+            border-color: var(--anhar-navy);
+        }
+
+        .search-icon-svg {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+        }
+
+        .filter-select-group {
+            flex: 0 1 240px;
+        }
+
+        .filter-select-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--anhar-border);
+            background-color: #f1f5f9;
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+
+        .doctors-section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 70px;
+        }
+
+        .doctors-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 25px;
+        }
+
+        .doctor-single-card {
+            background-color: #ffffff;
+            border-radius: 14px;
+            border: 1px solid var(--anhar-border);
+            box-shadow: 0 4px 12px rgba(15, 52, 96, 0.04);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doctor-single-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(15, 52, 96, 0.1);
+        }
+
+        .doctor-card-top {
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .doctor-img-box {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #e2e8f0;
+            flex-shrink: 0;
+            border: 3px solid #ffffff;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doctor-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .doctor-avatar-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--anhar-navy);
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .doctor-meta-info h2 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--anhar-navy);
+            margin-bottom: 4px;
+        }
+
+        .spec-badge {
+            display: inline-block;
+            background-color: rgba(64, 192, 87, 0.12);
+            color: var(--anhar-green-dark);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 50px;
+        }
+
+        .doctor-card-middle {
+            padding: 16px 20px;
+            flex: 1;
+        }
+
+        .doctor-brief-text {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            line-height: 1.5;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-right: 3px solid var(--anhar-navy);
+        }
+
+        .keywords-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag-item {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .doctor-card-bottom {
+            padding: 15px 20px 20px;
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-view-details {
+            flex: 1;
+            background-color: #ffffff;
+            color: var(--anhar-navy);
+            border: 1px solid var(--anhar-navy);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-view-details:hover {
+            background-color: var(--anhar-navy);
+            color: #ffffff;
+        }
+
+        .btn-book-now {
+            background-color: var(--anhar-green);
+            color: #ffffff !important;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* النافذة التفصيلية للمحتوى الطبي */
+        .doctor-modal-backdrop {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(10, 34, 64, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .doctor-modal-backdrop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .doctor-modal-dialog {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            max-height: 88vh;
+            border-radius: 14px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-top-bar {
+            background: linear-gradient(135deg, var(--anhar-dark) 0%, var(--anhar-navy) 100%);
+            color: #ffffff;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-doctor-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .modal-doctor-sub {
+            color: #4ade80;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .close-modal-btn {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: #ffffff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .modal-content-scroll {
+            padding: 22px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .medical-category-block {
+            margin-bottom: 20px;
+        }
+
+        .medical-category-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--anhar-navy);
+            margin-bottom: 8px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 4px;
+        }
+
+        .medical-items-ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 8px;
+        }
+
+        .medical-items-ul li {
+            position: relative;
+            padding-right: 16px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .medical-items-ul li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--anhar-green);
+            font-weight: bold;
+        }
+
+        .modal-bottom-bar {
+            padding: 14px 24px;
+            background-color: #f8fafc;
+            border-top: 1px solid var(--anhar-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* --- تصميم الفوتر المنظم --- */
+        .site-footer {
+            background-color: var(--anhar-footer-bg);
+            color: #ffffff;
+            padding-top: 35px;
+            padding-bottom: 15px;
+            font-family: 'Tajawal', sans-serif;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-main-area {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 0 20px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo-img {
+            width: 70px !important;
+            height: 70px !important;
+            max-width: 70px !important;
+            max-height: 70px !important;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            flex-shrink: 0;
+        }
+
+        .footer-brand-text h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 4px 0;
+        }
+
+        .footer-brand-text p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin: 0;
+        }
+
+        .footer-social-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-social-nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .footer-social-nav a:hover {
+            color: var(--anhar-green);
+        }
+
+        .footer-copyright-bar {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 15px 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .copyright-right { text-align: right; }
+        .designer-center { color: #cbd5e1; font-weight: 500; text-align: center; }
+        .designer-center strong { color: var(--anhar-green); font-weight: 700; }
+        .back-to-top-left { text-align: left; }
+
+        .back-to-top-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .back-to-top-link:hover { color: var(--anhar-green); }
+
+        @media (max-width: 900px) {
+            .mobile-toggle { display: block; }
+            .main-navbar {
+                display: none;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: #ffffff;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .main-navbar.active { display: block; }
+            .nav-list-menu { flex-direction: column; align-items: flex-start; gap: 15px; }
+
+            .footer-main-area, .footer-copyright-bar {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .copyright-right, .designer-center, .back-to-top-left { text-align: center; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- 1. الهيدر المنهجي الرسمي للموقع -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo-area">
+                <img src="logo.jpg" alt="شعار مستشفى الأنهار التخصصي" class="brand-logo-img">
+                <div class="brand-titles">
+                    <span class="brand-name-main">مستشفى الأنهار</span>
+                    <span class="brand-name-sub">التخصصي</span>
+                </div>
             </a>
-            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="clinics.html">العيادات والتخصصات</a></li>
-                <li><a href="units.html">الوحدات</a></li>
-                <li><a href="ancillary.html">الوحدات الملحقة</a></li>
-                <li><a href="pr.html">العلاقات العامة والتسويق</a></li>
-                <li><a href="offers.html" class="nav-offer-link">العروض <span class="nav-badge">خاص</span></a></li>
-                <li><a href="news.html">الأخبار</a></li>
-                <li><a href="doctors.html" class="nav-active">الاستشاريون والطواقم</a></li>
-                <li><a href="index.html#appointment" class="btn-nav-highlight">حجز موعد</a></li>
-                <li><a href="index.html#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
+
+            <button class="mobile-toggle" onclick="toggleNavMenu()" aria-label="فتح القائمة">&#9776;</button>
+
+            <nav class="main-navbar" id="mainNavbar">
+                <ul class="nav-list-menu">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="clinics.html">العيادات والتخصصات</a></li>
+                    <li><a href="units.html">الوحدات</a></li>
+                    <li><a href="attached-units.html">الوحدات الملحقة</a></li>
+                    <li><a href="pr-marketing.html">العلاقات العامة والتسويق</a></li>
+                    <li><a href="offers.html">العروض <span class="badge-special">خاص</span></a></li>
+                    <li><a href="news.html">الأخبار</a></li>
+                    <li><a href="doctors.html" class="active">الاستشاريين والطواقم</a></li>
+                    <li><a href="index.html#appointment" class="btn-header-appointment">حجز موعد</a></li>
+                    <li><a href="contact.html" class="btn-header-contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- 2. عنوان الصفحة -->
-    <section class="page-header section-padding bg-subtle">
-        <div class="container text-center">
-            <h1 class="hero-title" style="color: var(--primary-navy);">الاستشاريون والطواقم الطبية</h1>
-            <p class="section-header p" style="max-width: 800px; margin: 0 auto;">
-                نفخر بنخبة من الاستشاريين والأخصائيين المتميزين المكرسين لخدمتكم ورعايتكم.
-            </p>
+    <!-- 2. واجهة الصفحة -->
+    <section class="page-hero-header">
+        <div class="container">
+            <h1>الاستشاريين والطواقم الطبية</h1>
+            <p>نخبة من كبار الاستشاريين والأخصائيين يقدمون رعاية طبية تخصصية شاملة بمستشفى الأنهار التخصصي.</p>
         </div>
     </section>
 
-    <!-- 3. الأطباء الثمانية بالضبط بالترتيب والنص الدقيق المنصوص عليه -->
-    <main class="section-padding">
-        <div class="container">
-            <div class="features-grid">
-                
-                <!-- طبيب 1 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--primary-navy);">👨‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. فؤاد مشهور</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">استشاري طب الأطفال وحديثي الولادة</p>
-                </div>
-
-                <!-- طبيب 2 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--primary-navy);">👨‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. جمال العنسي</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">استشاري جراحة المخ والأعصاب وجراحة العمود الفقري</p>
-                </div>
-
-                <!-- طبيب 3 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--primary-navy);">👨‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. لبيب المقطري</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">أخصائي جراحة العظام والمفاصل</p>
-                </div>
-
-                <!-- طبيب 4 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--primary-navy);">👨‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. هيثم الشريف</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">أخصائي باطنية وحميات</p>
-                </div>
-
-                <!-- طبيب 5 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--primary-navy);">👨‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. محمد الخولاني</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">استشاري جراحة الوجه والفكين</p>
-                </div>
-
-                <!-- طبيب 6 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--primary-navy);">👨‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. منير الوصابي</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">استشاري جراحة عامة وجراحة الأوعية الدموية</p>
-                </div>
-
-                <!-- طبيبة 7 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--accent-green);">👩‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. رشاء فارغ</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">أخصائية نساء وولادة</p>
-                </div>
-
-                <!-- طبيبة 8 -->
-                <div class="feature-card" style="text-align: right;">
-                    <div class="feature-icon" style="margin: 0 0 1rem 0; color: var(--accent-green);">👩‍⚕️</div>
-                    <h3 style="color: var(--primary-navy);">د. هنادي خزرجي</h3>
-                    <p style="font-weight: 700; color: var(--secondary-blue);">طبيبة الأسنان</p>
-                </div>
-
+    <!-- 3. شريط البحث والتصفية -->
+    <div class="doctors-filter-wrapper">
+        <div class="doctors-filter-card">
+            <div class="search-input-group">
+                <svg class="search-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="docSearch" placeholder="ابحث باسم الطبيب، التخصص، أو الحالة المرضية..." aria-label="بحث عن طبيب">
             </div>
 
-            <div class="units-callout" style="margin-top: 3rem;">
-                <h3>احجز موعد استشارتك الآن</h3>
-                <p>اختر الطبيب والقسم المطلوب لحجز معاينتك عبر الواتساب المباشر أو البريد الإلكتروني.</p>
-                <a href="index.html#appointment" class="btn btn-primary">حجز موعد إلكتروني</a>
+            <div class="filter-select-group">
+                <select id="docSpecFilter" aria-label="تصفية حسب التخصص">
+                    <option value="all">جميع التخصصات الطبية</option>
+                    <option value="maxillofacial">جراحة الفم والوجه والفكين</option>
+                    <option value="neurosurgery">جراحة المخ والأعصاب والعمود الفقري</option>
+                    <option value="orthopedics">جراحة العظام والمفاصل</option>
+                    <option value="pediatrics">طب الأطفال وحديثي الولادة</option>
+                    <option value="general-surgery">الجراحة العامة والأوعية الدموية</option>
+                    <option value="internal-medicine">الأمراض الباطنية</option>
+                    <option value="obgyn">أمراض النساء والولادة</option>
+                    <option value="dentistry">طب الفم والأسنان</option>
+                </select>
             </div>
+
+            <div style="font-size: 0.88rem; color: var(--text-gray); font-weight: 600;" id="docCountDisplay">
+                عرض 8 أطباء
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. شبكة الأطباء الثمانية مع ربط الصور المعينة لكافة الأطباء -->
+    <main class="doctors-section-container">
+        <div class="doctors-grid-layout" id="doctorsGrid">
+
+            <!-- 1. د. محمد الخولاني (doctor1.png) -->
+            <article class="doctor-single-card" data-id="1" data-spec="maxillofacial" data-keys="محمد الخولاني جراحة الفم والوجه والفكين كسور أورام أكياس لثة شفة أرنبية حنك ذقن خزعات">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor1.png" alt="د. محمد الخولاني" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor1.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">م.خ</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. محمد الخولاني</h2>
+                        <span class="spec-badge">استشاري جراحة الفم والوجه والفكين</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        متخصص في كسور الوجه والفكين، جراحات الأورام والأكياس المرضية، والعيوب الخلقية والترميم.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">كسور الوجه والفكين</span>
+                        <span class="tag-item">أورام وآفات الفم</span>
+                        <span class="tag-item">العيوب الخلقية</span>
+                        <span class="tag-item">ترميم وتجميل الذقن</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(1)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
+            <!-- 2. د. جمال العنيسي (doctor2.png) -->
+            <article class="doctor-single-card" data-id="2" data-spec="neurosurgery" data-keys="جمال العنيسي جراحة المخ والأعصاب والعمود الفقري انزلاق غضروفي رقبة ظهر صداع دوخة توازن تنميل خدر">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor2.png" alt="د. جمال العنيسي" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor2.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">ج.ع</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. جمال العنيسي</h2>
+                        <span class="spec-badge">استشاري جراحة المخ والأعصاب والعمود الفقري</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        تشخيص ومتابعة أمراض المخ والأعصاب، آلام الظهر والرقبة، الانزلاق الغضروفي وضغط الأعصاب.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">آلام العمود الفقري</span>
+                        <span class="tag-item">الانزلاق الغضروفي</span>
+                        <span class="tag-item">الصداع والدوخة</span>
+                        <span class="tag-item">التنميل وآلام الأطراف</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(2)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
+            <!-- 3. د. لبيب المقطري (doctor3.png) -->
+            <article class="doctor-single-card" data-id="3" data-spec="orthopedics" data-keys="لبيب المقطري جراحة العظام والمفاصل كسور فخذ ساق ترقوة خلع أوتار ركبة حوض أطفال خشونة روماتويد نقرس">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor3.png" alt="د. لبيب المقطري" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor3.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">ل.م</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. لبيب المقطري</h2>
+                        <span class="spec-badge">استشاري جراحة العظام والمفاصل</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        كبير استشاريي جراحة العظام والمفاصل بالحديدة - متخصص في الكسور المعقدة وعظام الأطفال والمفاصل.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">كسور الأطراف والحوض</span>
+                        <span class="tag-item">خشونة وتنكس المفاصل</span>
+                        <span class="tag-item">جراحة عظام الأطفال</span>
+                        <span class="tag-item">التثبيت بالصفائح والمسامير</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(3)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
+            <!-- 4. د. فؤاد طاهر مشهور (doctor4.png) -->
+            <article class="doctor-single-card" data-id="4" data-spec="pediatrics" data-keys="فؤاد طاهر مشهور طب الأطفال وحديثي الولادة تغذية نمو سكري غدد ربو صدر هضمية صرع تبول لاإرادي بورد بوستن">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor4.png" alt="د. فؤاد طاهر مشهور" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor4.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">ف.م</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. فؤاد طاهر مشهور</h2>
+                        <span class="spec-badge">استشاري طب الأطفال وحديثي الولادة</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        مدرب مساق بورد طب الأطفال | حاصل على شهادة تغذية الأطفال من جامعة بوسطن الأمريكية.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">حديثو الولادة</span>
+                        <span class="tag-item">النمو والتغذية والسمنة</span>
+                        <span class="tag-item">السكري والغدد عند الأطفال</span>
+                        <span class="tag-item">الربو وأمراض الصدر</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(4)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
+            <!-- 5. د. منير الوصابي (doctor5.png) -->
+            <article class="doctor-single-card" data-id="5" data-spec="general-surgery" data-keys="منير الوصابي الجراحة العامة وجراحة الأوعية الدموية درقية مرارة طحال فتق بواسير زائدة قدم سكرية دوالي غسيل كلوي">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor5.png" alt="د. منير الوصابي" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor5.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">م.و</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. منير الوصابي</h2>
+                        <span class="spec-badge">استشاري الجراحة العامة والأوعية الدموية</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        متخصص في جراحات الغدد، جهاز الهضم، الفتق، دوالي الساقين، القدم السكرية، ووصلات الغسيل الكلوي.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">جراحات الغدة والمرارة</span>
+                        <span class="tag-item">إصلاح الفتق والجهاز الهضمي</span>
+                        <span class="tag-item">دوالي الساقين والقدم السكرية</span>
+                        <span class="tag-item">وصلة الغسيل الكلوي (AVF)</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(5)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
+            <!-- 6. د. هيثم الشريف (doctor6.png) -->
+            <article class="doctor-single-card" data-id="6" data-spec="internal-medicine" data-keys="هيثم الشريف الأمراض الباطنية سكري ضغط كوليسترول دهون معدة قولون ربو غدة درقية كلى مناعة مفاصل">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor6.png" alt="د. هيثم الشريف" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor6.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">هـ.ش</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. هيثم الشريف</h2>
+                        <span class="spec-badge">أخصائي الأمراض الباطنية</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        تشخيص ومتابعة الأمراض المزمنة، السكري، الضغط، أمراض الجهاز الهضمي، الكبد، والغدد الصماء.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">السكري وضغط الدم</span>
+                        <span class="tag-item">قرحة المعدة والقولون</span>
+                        <span class="tag-item">اضطرابات الغدة الدرقية</span>
+                        <span class="tag-item">متابعة صحة الكليتين</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(6)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
+            <!-- 7. د. رشا فارع (doctor7.png) -->
+            <article class="doctor-single-card" data-id="7" data-spec="obgyn" data-keys="رشا فارع أمراض النساء والولادة تأخر إنجاب حمل قيصرية سونار دوبلر ثدي مبايض رحم تجميل مهبل">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor7.png" alt="د. رشا فارع" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor7.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">ر.ف</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. رشا فارع</h2>
+                        <span class="spec-badge">أخصائية أمراض النساء والولادة</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        رعاية الحمل والولادة الطبيعية والقيصرية، متابعة تأخر الإنجاب، جراحات الرحم والمبايض والترميم.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">تأخر الإنجاب والمبايض</span>
+                        <span class="tag-item">متابعة الحمل بالدوبلر</span>
+                        <span class="tag-item">الولادة القيصرية والطبيعية</span>
+                        <span class="tag-item">الترميم النسائي والتجميل</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(7)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
+            <!-- 8. د. هنادي الخزرجي (doctor8.png) -->
+            <article class="doctor-single-card" data-id="8" data-spec="dentistry" data-keys="هنادي الخزرجي طب الفم والأسنان تقويم ابتسامة هوليوود فينير حشوات عصب تركيبات زيركون إيماكس لثة قلع أطفال">
+                <div class="doctor-card-top">
+                    <div class="doctor-img-box">
+                        <img src="doctor8.png" alt="د. هنادي الخزرجي" onerror="if(this.src.indexOf('images/')===-1){this.src='images/doctor8.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                        <div class="doctor-avatar-fallback" style="display:none;">هـ.خ</div>
+                    </div>
+                    <div class="doctor-meta-info">
+                        <h2>د. هنادي الخزرجي</h2>
+                        <span class="spec-badge">أخصائية طب الفم والأسنان</span>
+                    </div>
+                </div>
+                <div class="doctor-card-middle">
+                    <div class="doctor-brief-text">
+                        تقويم الأسنان، ابتسامة هوليوود، علاج العصب، التركيبات الثابتة (زيركون وإيماكس) وطب أسنان الأطفال.
+                    </div>
+                    <div class="keywords-tags">
+                        <span class="tag-item">تقويم الأسنان</span>
+                        <span class="tag-item">ابتسامة هوليوود والفينير</span>
+                        <span class="tag-item">تركيبات الزيركون والإيماكس</span>
+                        <span class="tag-item">أسنان الأطفال والعصب</span>
+                    </div>
+                </div>
+                <div class="doctor-card-bottom">
+                    <button type="button" class="btn-view-details" onclick="showDoctorDetails(8)">عرض التفاصيل</button>
+                    <a href="index.html#appointment" class="btn-book-now">حجز موعد</a>
+                </div>
+            </article>
+
         </div>
     </main>
 
-    <!-- 4. الترويسة السفلية الموحدة (Footer) -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <img src="logo.jpg" alt="شعار المستشفى" class="footer-logo">
+    <!-- 5. النافذة التفصيلية لعرض كافة الحالات والخدمات -->
+    <div id="doctorDetailsModal" class="doctor-modal-backdrop" onclick="closeModalOnBg(event)">
+        <div class="doctor-modal-dialog">
+            <div class="modal-top-bar">
                 <div>
+                    <div id="mDocName" class="modal-doctor-title">د. اسم الطبيب</div>
+                    <div id="mDocSpec" class="modal-doctor-sub">التخصص الطبي</div>
+                </div>
+                <button type="button" class="close-modal-btn" onclick="hideDoctorDetails()">&times;</button>
+            </div>
+            <div id="mDocBody" class="modal-content-scroll">
+                <!-- المحتوى يضاف عبر JS -->
+            </div>
+            <div class="modal-bottom-bar">
+                <span style="font-size: 0.85rem; color: var(--text-gray);">مستشفى الأنهار التخصصي - الحديدة</span>
+                <a href="index.html#appointment" class="btn-book-now">حجز موعد مع الطبيب</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. الفوتر المنسق والمصحح بالكامل -->
+    <footer class="site-footer">
+        <div class="footer-main-area">
+            <div class="footer-brand-box">
+                <img src="logo.jpg" alt="شعار مستشفى الأنهار التخصصي" class="footer-logo-img">
+                <div class="footer-brand-text">
                     <h3>مستشفى الأنهار التخصصي</h3>
                     <p>صحتكم مسؤوليتنا ❤️</p>
                 </div>
             </div>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/share/184HiWcWcP/" target="_blank" rel="noopener noreferrer">فيسبوك</a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">يوتيوب</a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">إنستغرام</a>
+
+            <div class="footer-social-nav">
+                <a href="https://facebook.com" target="_blank" rel="noopener">فيسبوك</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener">يوتيوب</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener">إنستغرام</a>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 مستشفى الأنهار التخصصي - جميع الحقوق محفوظة.</p>
-                <p class="designer-credit">Designed by Dr. Ammar Al-Qahwi (د. عمار القحوي)</p>
-                <a href="#top" class="back-to-top">العودة للأعلى ↑</a>
+        </div>
+
+        <div class="footer-copyright-bar">
+            <div class="copyright-right">
+                © 2026 مستشفى الأنهار التخصصي - جميع الحقوق محفوظة.
+            </div>
+
+            <div class="designer-center">
+                Designed by <strong>Dr. Ammar Al-Qahwi (د. عمار القحوي)</strong>
+            </div>
+
+            <div class="back-to-top-left">
+                <a href="#top" class="back-to-top-link">العودة للأعلى ↑</a>
             </div>
         </div>
     </footer>
 
-    <script src="script.js?v=4"></script>
+    <!-- قاعدة البيانات البرمجية الشاملة للأطباء -->
+    <script>
+        const doctorsDataMap = {
+            1: {
+                name: "د. محمد الخولاني",
+                specialty: "استشاري جراحة الفم والوجه والفكين",
+                sections: [
+                    {
+                        title: "أولاً: كسور وإصابات الوجه والفكين",
+                        items: [
+                            "كسور الفك العلوي والسفلي وتثبيتها جراحياً باستخدام الصفائح والبراغي عند الحاجة.",
+                            "كسور عظام الوجنة والوجه والأنف.",
+                            "كسور محجر العين، بما فيها قاع المحجر والجدران المحيطة به.",
+                            "الجروح المركبة في الوجه والشفتين وإصلاح الأنسجة الرخوة."
+                        ]
+                    },
+                    {
+                        title: "ثانياً: أمراض وأورام الفم والفكين",
+                        items: [
+                            "تقييم الأورام والآفات المرضية في الفم واللسان واللثة وعظام الفكين.",
+                            "تشخيص واستئصال الأكياس المرضية في الفكين، بما فيها الأكياس الجذرية وذات المنشأ السني.",
+                            "تقييم أمراض الغدد اللعابية، مثل حصوات القنوات اللعابية.",
+                            "أخذ الخزعات النسيجية لتشخيص الآفات المرضية."
+                        ]
+                    },
+                    {
+                        title: "ثالثاً: العيوب الخلقية وتشوهات الوجه والفكين",
+                        items: [
+                            "تقييم حالات شق الشفة (الشفة الأرنبية).",
+                            "تقييم حالات شق الحنك وتشوهاته.",
+                            "ترميم شقوق عظام الفك وتقييم الحاجة إلى التطعيم العظمي.",
+                            "متابعة حالات تشوهات الوجه والفكين لدى الأطفال بالتنسيق مع التخصصات المعنية."
+                        ]
+                    },
+                    {
+                        title: "رابعاً: جراحات ترميم وتجميل الوجه والفكين",
+                        items: [
+                            "ترميم عظام الوجه والفكين بعد الحوادث أو بعض العمليات الجراحية.",
+                            "تعديل شكل الذقن (Genioplasty) عند ملاءمة الحالة.",
+                            "ترميم الندبات والجروح القديمة في الوجه."
+                        ]
+                    }
+                ]
+            },
+            2: {
+                name: "د. جمال العنيسي",
+                specialty: "استشاري جراحة المخ والأعصاب والعمود الفقري",
+                sections: [
+                    {
+                        title: "يناظر ويستقبل الحالات التالية:",
+                        items: [
+                            "تشخيص ومتابعة أمراض المخ والأعصاب التي تستدعي تقييماً تخصصياً.",
+                            "آلام الرقبة وأسفل الظهر ومشكلات العمود الفقري.",
+                            "الانزلاق الغضروفي وضغط الأعصاب المرتبط بأمراض العمود الفقري.",
+                            "الصداع والدوخة واضطرابات التوازن التي تستدعي تقييماً عصبياً.",
+                            "التنميل والخدر وآلام الأطراف المرتبطة بمشكلات الأعصاب.",
+                            "تقييم إصابات المخ والعمود الفقري والحالات التي قد تحتاج إلى تدخل جراحي.",
+                            "تحديد الخطة العلاجية المناسبة، سواء بالعلاج التحفظي أو التدخل الجراحي أو الإحالة إلى تخصص آخر."
+                        ]
+                    }
+                ]
+            },
+            3: {
+                name: "د. لبيب المقطري",
+                specialty: "استشاري جراحة العظام والمفاصل (كبير استشاريي جراحة العظام والمفاصل بالحديدة)",
+                sections: [
+                    {
+                        title: "أولاً: إصابات وكسور الأطراف العلوية",
+                        items: [
+                            "كسور الترقوة والعضد والساعد والرسغ واليد.",
+                            "تثبيت الكسور بالصفائح والبراغي أو المسامير النخاعية أو وسائل التثبيت المناسبة.",
+                            "التثبيت الخارجي لبعض الكسور المعقدة.",
+                            "ردّ خلع المفاصل وتقييم الإصابات المصاحبة.",
+                            "إصابات الأوتار المصاحبة للكسور.",
+                            "تقييم الحالات التي قد تستدعي تدخلاً عاجلاً لتخفيف الضغط على الأنسجة."
+                        ]
+                    },
+                    {
+                        title: "ثانياً: إصابات وكسور الأطراف السفلية",
+                        items: [
+                            "كسور الفخذ والساق والكاحل والقدم.",
+                            "كسور الحوض وإصابات الأطراف السفلية المعقدة.",
+                            "الكسور المفتوحة والكسور التي تحتاج إلى التثبيت الخارجي.",
+                            "خلع المفاصل والتواءات الكاحل.",
+                            "إصابات الأوتار المصاحبة للكسور."
+                        ]
+                    },
+                    {
+                        title: "ثالثاً: أمراض العظام والمفاصل",
+                        items: [
+                            "خشونة مفصل الركبة ومشكلات المفاصل التنكسية.",
+                            "آلام ومشكلات الكتف والمرفق والرسغ واليد.",
+                            "أمراض الكاحل والقدم.",
+                            "تقييم حالات التهاب المفاصل الروماتويدي والنقرس من الناحية العظمية والمفصلية."
+                        ]
+                    },
+                    {
+                        title: "رابعاً: جراحة العظام لدى الأطفال",
+                        items: [
+                            "تقييم كسور الأطفال وعلاجها تحفظياً أو جراحياً حسب الحالة.",
+                            "كسور الأطراف العلوية والسفلية والكسور حول مفصل المرفق.",
+                            "تشخيص ومتابعة بعض أمراض العظام لدى الأطفال.",
+                            "تقييم التشوهات العظمية ومشكلات النمو.",
+                            "تقييم أورام وأكياس العظام الحميدة وتحديد الحاجة إلى تدخل متخصص."
+                        ]
+                    },
+                    {
+                        title: "خامساً: الإجراءات الجراحية المتخصصة",
+                        items: [
+                            "ردّ الكسور والخلوع وتثبيتها بالوسائل المناسبة.",
+                            "التثبيت الخارجي للكسور المفتوحة والمعقدة.",
+                            "تثبيت الكسور بالصفائح والبراغي والمسامير النخاعية وفق نوع الإصابة.",
+                            "بضع اللفافة عند تشخيص متلازمة الحيّز ووجود استطباب طبي عاجل."
+                        ]
+                    }
+                ]
+            },
+            4: {
+                name: "د. فؤاد طاهر مشهور",
+                specialty: "استشاري طب الأطفال وحديثي الولادة",
+                sections: [
+                    {
+                        title: "المؤهلات والاعتمادات الرسمية:",
+                        items: [
+                            "مدرب مساق بورد طب الأطفال – المجلس اليمني للاختصاصات الطبية.",
+                            "حاصل على شهادة برنامج الدراسات العليا في تغذية الأطفال من جامعة بوسطن الأمريكية."
+                        ]
+                    },
+                    {
+                        title: "أولاً: حديثو الولادة",
+                        items: [
+                            "تقييم حديثي الولادة ومتابعة حالتهم الصحية.",
+                            "تقييم الحالات التي قد تحتاج إلى تبديل الدم لحديثي الولادة عند وجود استطباب طبي."
+                        ]
+                    },
+                    {
+                        title: "ثانياً: النمو والتغذية وغدد الأطفال",
+                        items: [
+                            "اضطرابات النمو والتغذية.",
+                            "السمنة لدى الأطفال ومتابعة الحالة الغذائية.",
+                            "داء السكري واضطرابات الغدد الصماء لدى الأطفال."
+                        ]
+                    },
+                    {
+                        title: "ثالثاً: الحساسية والجهاز التنفسي",
+                        items: [
+                            "أمراض الحساسية والمناعة لدى الأطفال.",
+                            "الربو وأمراض الصدر والرئة لدى الأطفال."
+                        ]
+                    },
+                    {
+                        title: "رابعاً: الجهاز الهضمي والكبد",
+                        items: [
+                            "أمراض الجهاز الهضمي لدى الأطفال.",
+                            "أمراض الكبد واضطرابات وظائفه."
+                        ]
+                    },
+                    {
+                        title: "خامساً: القلب والروماتيزم والجهاز العصبي",
+                        items: [
+                            "تقييم أمراض القلب لدى الأطفال ومتابعتها والأمراض الروماتيزمية.",
+                            "الصرع واضطرابات الجهاز العصبي ومتابعة حالات الضمور الدماغي والاضطرابات النمائية.",
+                            "تقييم اضطرابات الكلام والنطق والتطور لدى الأطفال."
+                        ]
+                    },
+                    {
+                        title: "سادساً: الكلى والصحة السلوكية",
+                        items: [
+                            "أمراض الكلى لدى الأطفال والتبول اللاإرادي.",
+                            "تقييم المشكلات النفسية والسلوكية لدى الأطفال ضمن نطاق الاختصاص، مع الإحالة عند الحاجة."
+                        ]
+                    }
+                ]
+            },
+            5: {
+                name: "د. منير الوصابي",
+                specialty: "استشاري الجراحة العامة وجراحة الأوعية الدموية",
+                sections: [
+                    {
+                        title: "أولاً: جراحات الغدد والأعضاء الداخلية والفتق",
+                        items: [
+                            "أمراض الغدة الدرقية والحالات التي قد تستدعي التدخل الجراحي.",
+                            "الأكياس المائية في الكبد وتقييم الحاجة إلى استئصالها.",
+                            "جراحات المرارة والطحال عند وجود استطباب طبي.",
+                            "الفتق الإربي والفتق الجراحي وأنواع الفتق الأخرى وتحديد التدخل المناسب."
+                        ]
+                    },
+                    {
+                        title: "ثانياً: جراحات الشرج والجهاز الهضمي والطوارئ",
+                        items: [
+                            "جراحات البواسير، النواسير الشرجية، والشق الشرجي.",
+                            "الحالات الجراحية المتعلقة بقرحة المعدة والاثني عشر والزائدة الدودية.",
+                            "انسداد الأمعاء والتواء الأمعاء وبعض أمراض القولون الجراحية.",
+                            "تقييم الإصابات الناتجة عن الحوادث والجروح النافذة، بما فيها الإصابات الناتجة عن الطلقات النارية."
+                        ]
+                    },
+                    {
+                        title: "ثالثاً: جراحة الأوعية الدموية",
+                        items: [
+                            "أمراض الشرايين الطرفية واضطرابات الدورة الدموية في الأطراف.",
+                            "دوالي الساقين وتقييم الحاجة إلى العلاج.",
+                            "متابعة وعلاج القدم السكرية وتقييم التروية الدموية.",
+                            "إنشاء وصلة شريانية وريدية (AV Fistula) لمرضى الغسيل الكلوي عند توفر الخدمة."
+                        ]
+                    }
+                ]
+            },
+            6: {
+                name: "د. هيثم الشريف",
+                specialty: "أخصائي الأمراض الباطنية",
+                sections: [
+                    {
+                        title: "أولاً: الأمراض المزمنة وأمراض الجهاز الهضمي",
+                        items: [
+                            "داء السكري ومتابعة التحكم بمستويات السكر وارتفاع ضغط الدم واضطرابات الكوليسترول والدهون.",
+                            "قرحة المعدة والاثني عشر والارتجاع المعدي المريئي.",
+                            "متلازمة القولون العصبي (IBS).",
+                            "الكبد الدهني واضطرابات وظائف الكبد."
+                        ]
+                    },
+                    {
+                        title: "ثانياً: التنفسي والغدد والكلى والمناعة والمفاصل",
+                        items: [
+                            "الربو الشعبي، مرض الانسداد الرئوي المزمن (COPD)، والتهابات الصدر.",
+                            "خمول الغدة الدرقية وفرط نشاطها واضطرابات التمثيل الغذائي (الأيض).",
+                            "تقييم ومتابعة اضطرابات وظائف الكلى ومتابعة القصور الكلوي الأولي.",
+                            "التقييم الأولي لبعض اضطرابات الدم والمناعة وآلام المفاصل والروماتيزم الشائع."
+                        ]
+                    }
+                ]
+            },
+            7: {
+                name: "د. رشا فارع",
+                specialty: "أخصائية أمراض النساء والولادة",
+                sections: [
+                    {
+                        title: "أولاً: تأخر الإنجاب وأمراض الرحم والمبايض ومتابعة الحمل",
+                        items: [
+                            "تقييم حالات تأخر الإنجاب وتحديد أسبابها وخيارات العلاج.",
+                            "تشخيص وعلاج اضطرابات الرحم والمبايض وأكياس المبيض.",
+                            "تقييم حالات الحمل خارج الرحم والحمل العنقودي والتعامل معها.",
+                            "متابعة الحمل وإجراء الفحوصات وتحديد نمو الجنين والتشوهات بالموجات فوق الصوتية والدوبلر."
+                        ]
+                    },
+                    {
+                        title: "ثانياً: الولادة والعمليات النسائية والتجميل",
+                        items: [
+                            "متابعة الولادة الطبيعية وتعسر الولادة وتحريض المخاض (الطلق الصناعي).",
+                            "إجراء العمليات القيصرية وعمليات تنظيف الرحم.",
+                            "تقييم الحالات التي تستدعي استئصال الرحم أو جراحات الرحم والمبايض وربط قناتي فالوب.",
+                            "تقييم مشكلات الثدي لدى النساء والكشف المبكر.",
+                            "إصلاح تمزقات العجان والمهبل بعد الولادة والتجميل النسائي."
+                        ]
+                    }
+                ]
+            },
+            8: {
+                name: "د. هنادي الخزرجي",
+                specialty: "أخصائية طب الفم والأسنان",
+                sections: [
+                    {
+                        title: "خدمات العيادة والحالات التي تعالجها:",
+                        items: [
+                            "تقويم الأسنان الثابت والمتحرك وتقييم اصطفاف الأسنان والإطباق.",
+                            "تبييض الأسنان، ابتسامة هوليوود، والفينير التجميلي.",
+                            "الحشوات التجميلية وعلاج عصب الأسنان والتسوس.",
+                            "تنظيف الأسنان وإزالة الترسبات وعلاج التهابات اللثة.",
+                            "التركيبات السنية (الخزف، الزيركون، E.max، الأطقم المتحركة).",
+                            "قلع الأسنان الجراحي والتحفظي.",
+                            "تقديم الخدمات العلاجية والوقائية المتخصصة لأسنان الأطفال."
+                        ]
+                    }
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('docSearch');
+            const specSelect = document.getElementById('docSpecFilter');
+            const docCards = document.querySelectorAll('.doctor-single-card');
+            const countDisplay = document.getElementById('docCountDisplay');
+
+            function applyFilter() {
+                const q = searchInput.value.trim().toLowerCase();
+                const spec = specSelect.value;
+                let count = 0;
+
+                docCards.forEach(card => {
+                    const cardSpec = card.getAttribute('data-spec');
+                    const cardKeys = card.getAttribute('data-keys').toLowerCase();
+                    const cardText = card.innerText.toLowerCase();
+
+                    const matchSpec = (spec === 'all' || cardSpec === spec);
+                    const matchQ = (q === '' || cardKeys.includes(q) || cardText.includes(q));
+
+                    if (matchSpec && matchQ) {
+                        card.style.display = 'flex';
+                        count++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                countDisplay.textContent = `عرض ${count} من أصل ${docCards.length} أطباء`;
+            }
+
+            searchInput.addEventListener('input', applyFilter);
+            specSelect.addEventListener('change', applyFilter);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideDoctorDetails();
+            });
+        });
+
+        function showDoctorDetails(id) {
+            const data = doctorsDataMap[id];
+            if (!data) return;
+
+            document.getElementById('mDocName').textContent = data.name;
+            document.getElementById('mDocSpec').textContent = data.specialty;
+
+            const body = document.getElementById('mDocBody');
+            body.innerHTML = '';
+
+            data.sections.forEach(sec => {
+                const block = document.createElement('div');
+                block.className = 'medical-category-block';
+
+                const h3 = document.createElement('h3');
+                h3.className = 'medical-category-title';
+                h3.textContent = sec.title;
+                block.appendChild(h3);
+
+                const ul = document.createElement('ul');
+                ul.className = 'medical-items-ul';
+
+                sec.items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+
+                block.appendChild(ul);
+                body.appendChild(block);
+            });
+
+            const modal = document.getElementById('doctorDetailsModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideDoctorDetails() {
+            const modal = document.getElementById('doctorDetailsModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnBg(e) {
+            if (e.target.id === 'doctorDetailsModal') {
+                hideDoctorDetails();
+            }
+        }
+
+        function toggleNavMenu() {
+            const navbar = document.getElementById('mainNavbar');
+            navbar.classList.toggle('active');
+        }
+    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>

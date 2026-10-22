@@ -4,20 +4,896 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a2a5e">
-    <meta name="description" content="عروض وخصومات مستشفى الأنهار التخصصي لشهر أكتوبر 2026 - عيادة النساء والولادة د. رشاء فارغ.">
+    <meta name="description" content="عروض وخصومات مستشفى الأنهار التخصصي - عيادات د. رشاء فارغ ود. منير الوصابي">
     <title>العروض والخصومات | مستشفى الأنهار التخصصي</title>
-    <!-- خط تجوال العربي -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <!-- أيقونة الموقع -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
-    <!-- استدعاء ملف التنسيقات الموحد -->
-    <link rel="stylesheet" href="style.css?v=4">
+    <style>
+        :root {
+            --primary-navy: #0a2a5e;
+            --secondary-blue: #1e4a8a;
+            --accent-green: #2ecc71;
+            --accent-red: #d32f2f;
+            --accent-gold: #f1c40f;
+            --white: #ffffff;
+            --light-bg: #f0f4f8;
+            --card-shadow: 0 10px 40px rgba(10, 42, 94, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============ NAVBAR ============ */
+        .header {
+            background: var(--primary-navy);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .brand strong {
+            display: block;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .brand small {
+            font-size: 12px;
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-active {
+            background: var(--accent-green) !important;
+            color: white !important;
+        }
+
+        .nav-badge {
+            background: var(--accent-red);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-right: 5px;
+        }
+
+        .btn-nav-highlight {
+            background: var(--accent-gold) !important;
+            color: var(--primary-navy) !important;
+            font-weight: 800 !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* ============ PAGE HEADER ============ */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 50%, #2980b9 100%);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-red);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ OFFERS SECTION ============ */
+        .offers-section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-gold));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ============ OFFER CARD (Common) ============ */
+        .offer-poster {
+            max-width: 1000px;
+            margin: 0 auto 50px;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 2px solid #e0e8f0;
+        }
+
+        /* ============ OFFER 1: DR. RASHA ============ */
+        .offer-rasha-header {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 50%, #c39bd3 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-rasha-header::before {
+            content: '👩‍⚕️';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            opacity: 0.15;
+        }
+
+        .offer-rasha-header::after {
+            content: '🤰';
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 60px;
+            opacity: 0.15;
+        }
+
+        .offer-rasha-header h2 {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .offer-rasha-header .doctor-name-display {
+            font-size: 22px;
+            font-weight: 700;
+            opacity: 0.95;
+        }
+
+        .offer-rasha-header .specialty-display {
+            font-size: 18px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .rasha-offers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 30px;
+            background: linear-gradient(180deg, #f8f0ff 0%, #ffffff 100%);
+        }
+
+        .rasha-offer-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(142, 68, 173, 0.1);
+            border: 2px solid #e8d5f5;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rasha-offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(142, 68, 173, 0.2);
+        }
+
+        .rasha-offer-card .offer-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .rasha-offer-card h4 {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--primary-navy);
+            margin-bottom: 8px;
+        }
+
+        .rasha-offer-card .discount-value {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+        }
+
+        .rasha-offer-card .discount-value.free {
+            color: var(--accent-red);
+        }
+
+        .rasha-offer-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .rasha-birth-offer {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin: 0 30px 30px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .rasha-birth-offer h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .rasha-birth-offer .big-discount {
+            font-size: 60px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .rasha-birth-offer p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .rasha-birth-offer .btn-book {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .rasha-birth-offer .btn-book:hover {
+            background: #27ae60;
+            transform: scale(1.05);
+        }
+
+        /* ============ OFFER 2: DR. MUNIR ============ */
+        
+        /* Poster Banner Image */
+        .munir-poster-banner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e8f4fd 0%, #ffffff 100%);
+        }
+
+        .munir-poster-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .munir-poster-banner:hover img {
+            transform: scale(1.02);
+        }
+
+        .munir-poster-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, rgba(10, 42, 94, 0.1));
+            pointer-events: none;
+        }
+
+        .munir-poster-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 900;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        /* Header Info Below Poster */
+        .offer-munir-header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-munir-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" opacity="0.05">⚕</text></svg>');
+            opacity: 0.3;
+        }
+
+        .munir-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .munir-header-content h2 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .munir-header-content .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .munir-doctor-info {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .munir-doctor-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            overflow: hidden;
+            margin: 0 auto 10px;
+            background: #e3f2fd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .munir-doctor-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .munir-doctor-info h3 {
+            font-size: 17px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .munir-doctor-info .specialty {
+            font-size: 13px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .free-exam-badge-munir {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-top: 8px;
+        }
+
+        /* Date Pills */
+        .date-pills {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 30px;
+            background: linear-gradient(180deg, #e8f4fd 0%, #ffffff 100%);
+        }
+
+        .date-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .date-pill-white {
+            background: white;
+            border: 2px solid var(--secondary-blue);
+            color: var(--primary-navy);
+        }
+
+        .date-pill-blue {
+            background: linear-gradient(90deg, var(--primary-navy), var(--secondary-blue));
+            color: white;
+        }
+
+        .date-pill .date-highlight {
+            color: var(--accent-red);
+            font-weight: 900;
+        }
+
+        .date-pill-blue .date-highlight {
+            color: var(--accent-gold);
+        }
+
+        /* Services Grid */
+        .munir-services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 25px 30px;
+        }
+
+        .munir-service-card {
+            background: white;
+            border: 2px solid var(--secondary-blue);
+            border-radius: 14px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .munir-service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(10, 42, 94, 0.15);
+        }
+
+        .munir-service-header {
+            background: var(--accent-red);
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .munir-service-icon {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .munir-service-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .munir-service-text {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.4;
+        }
+
+        /* Price Section */
+        .munir-price-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 25px 30px;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .munir-price-banner {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            border: 3px solid var(--secondary-blue);
+            border-radius: 50px;
+            padding: 10px 30px;
+            box-shadow: 0 6px 20px rgba(10, 42, 94, 0.1);
+        }
+
+        .munir-price-amount {
+            font-size: 55px;
+            font-weight: 900;
+            color: var(--primary-navy);
+            line-height: 1;
+        }
+
+        .munir-price-currency {
+            font-size: 30px;
+            font-weight: 900;
+            color: var(--primary-navy);
+        }
+
+        .munir-price-label {
+            background: linear-gradient(135deg, var(--accent-red), #b71c1c);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .meds-warning {
+            background: var(--accent-red);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Package Box */
+        .munir-package {
+            margin: 0 30px 30px;
+            background: white;
+            border: 3px solid var(--secondary-blue);
+            border-radius: 18px;
+            padding: 30px 25px 20px;
+            position: relative;
+        }
+
+        .munir-package-title {
+            position: absolute;
+            top: -18px;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--secondary-blue);
+            color: white;
+            padding: 6px 35px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .munir-package-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+        }
+
+        .munir-package-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .munir-check {
+            width: 26px;
+            height: 26px;
+            background: var(--accent-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .munir-package-item span {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-brand h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-green);
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .designer-credit {
+            color: var(--accent-gold) !important;
+            font-weight: 700;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 992px) {
+            .rasha-offers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .munir-services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                background: var(--primary-navy);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .offer-munir-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .rasha-offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .munir-services {
+                grid-template-columns: 1fr;
+            }
+
+            .munir-package-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .munir-price-banner {
+                flex-direction: column;
+                border-radius: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-brand {
+                flex-direction: column;
+            }
+
+            .munir-poster-badge {
+                top: 10px;
+                right: 10px;
+                font-size: 13px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 1. القائمة العلوية الموحدة (10 روابط) -->
+    <!-- ========== NAVBAR ========== -->
     <header class="header" id="top">
         <nav class="navbar container" aria-label="القائمة الرئيسية">
             <a href="index.html" class="brand">
@@ -27,7 +903,7 @@
                     <small>التخصصي</small>
                 </span>
             </a>
-            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
@@ -36,7 +912,7 @@
                 <li><a href="units.html">الوحدات</a></li>
                 <li><a href="ancillary.html">الوحدات الملحقة</a></li>
                 <li><a href="pr.html">العلاقات العامة والتسويق</a></li>
-                <li><a href="offers.html" class="nav-active nav-offer-link">العروض <span class="nav-badge">عرض خاص</span></a></li>
+                <li><a href="offers.html" class="nav-active">العروض <span class="nav-badge">عرض خاص</span></a></li>
                 <li><a href="news.html">الأخبار</a></li>
                 <li><a href="doctors.html">الاستشاريون والطواقم</a></li>
                 <li><a href="index.html#appointment" class="btn-nav-highlight">حجز موعد</a></li>
@@ -45,76 +921,219 @@
         </nav>
     </header>
 
-    <!-- 2. عنوان الصفحة -->
-    <section class="page-header section-padding bg-subtle">
-        <div class="container text-center">
-            <span class="hero-badge">عروض شهر أكتوبر 2026</span>
-            <h1 class="hero-title" style="color: var(--primary-navy);">عروض استثنائية لصحتك وصحة طفلك</h1>
-            <p class="section-header p" style="max-width: 800px; margin: 0 auto;">
-                أكبر صرح طبي في محافظة الحديدة يقدم لكم أفضل التسهيلات والخصومات المتميزة طوال شهر أكتوبر.
-            </p>
+    <!-- ========== PAGE HEADER ========== -->
+    <section class="page-header">
+        <div class="container">
+            <span class="hero-badge">عروض حصرية - أكتوبر إلى ديسمبر 2026</span>
+            <h1 class="hero-title">عروض استثنائية لصحتك وصحة عائلتك</h1>
+            <p>أكبر صرح طبي في محافظة الحديدة يقدم لكم أفضل التسهيلات والخصومات المتميزة مع نخبة من الاستشاريين والأخصائيين</p>
         </div>
     </section>
 
-    <!-- 3. تفاصيل البروشور والعروض المعتمدة -->
-    <main class="section-padding">
+    <!-- ========== OFFERS SECTION ========== -->
+    <main class="offers-section">
         <div class="container">
-            
-            <div class="units-callout" style="background: linear-gradient(135deg, #0a2a5e 0%, #1e4a8a 100%); color: var(--white); border: none;">
-                <h2 style="color: var(--accent-green); margin-bottom: 0.5rem;">عيادة النساء والولادة — د. رشاء فارغ</h2>
-                <p style="font-size: 1.15rem; color: #ffffff; opacity: 0.95;">أخصائية النساء والولادة | عروض حصرية طوال شهر أكتوبر 2026</p>
+            <h2 class="section-title">عروضنا المميزة</h2>
+
+            <!-- ==================== OFFER 1: DR. RASHA ==================== -->
+            <div class="offer-poster">
+                <!-- Header -->
+                <div class="offer-rasha-header">
+                    <h2>👩‍⚕️ عيادة النساء والولادة</h2>
+                    <div class="doctor-name-display">د. رشاء فارغ</div>
+                    <div class="specialty-display">أخصائية النساء والولادة</div>
+                </div>
+
+                <!-- Offers Grid -->
+                <div class="rasha-offers-grid">
+                    <!-- Offer 1 -->
+                    <div class="rasha-offer-card">
+                        <div class="offer-icon">🩺</div>
+                        <h4>المعاينة والاستشارة</h4>
+                        <div class="discount-value free">مجاناً 100%</div>
+                        <p>استشارة مع الدكتورة بدون أي رسوم معاينة طوال فترة العرض</p>
+                    </div>
+
+                    <!-- Offer 2 -->
+                    <div class="rasha-offer-card">
+                        <div class="offer-icon">📻</div>
+                        <h4>فحص السونار</h4>
+                        <div class="discount-value">خصم 50%</div>
+                        <p>فحوصات الموجات فوق الصوتية (السونار) بنصف التكلفة</p>
+                    </div>
+
+                    <!-- Offer 3 -->
+                    <div class="rasha-offer-card">
+                        <div class="offer-icon">🧪</div>
+                        <h4>الفحوصات المخبرية</h4>
+                        <div class="discount-value">خصم 30%</div>
+                        <p>خصم خاص على كافة الفحوصات الطبية والمخبرية للعيادة</p>
+                    </div>
+
+                    <!-- Offer 4 -->
+                    <div class="rasha-offer-card">
+                        <div class="offer-icon">💊</div>
+                        <h4>صرف العلاج مجاناً</h4>
+                        <div class="discount-value free" style="font-size: 18px;">الإثنين والخميس</div>
+                        <p>صرف أدوية عيادة النساء والولادة مجاناً حسب المتاح بالصيدلية</p>
+                    </div>
+                </div>
+
+                <!-- Birth Offer -->
+                <div class="rasha-birth-offer">
+                    <h3>🤰 خصم عمليات الولادة القيصرية والطبيعية</h3>
+                    <div class="big-discount">خصم 40%</div>
+                    <p>أكتوبر شهر الاهتمام بكِ وبصحة مولودك - مستشفى الأنهار التخصصي صحتكم مسؤوليتنا</p>
+                    <a href="index.html#appointment" class="btn-book">احجزي موعدكِ الآن لتأكيد الخصم</a>
+                </div>
             </div>
 
-            <div class="features-grid">
+            <!-- ==================== OFFER 2: DR. MUNIR ==================== -->
+            <div class="offer-poster">
                 
-                <!-- عرض 1 -->
-                <div class="feature-card">
-                    <div class="feature-icon" style="background-color: rgba(46, 204, 113, 0.1); color: var(--accent-green);">🩺</div>
-                    <h3>المعاينة والاستشارة</h3>
-                    <p style="font-size: 1.5rem; font-weight: 800; color: var(--accent-green); margin: 0.5rem 0;">مجاناً 100%</p>
-                    <p>استشارة مع الدكتورة بدون أي رسوم معاينة طوال فترة العرض.</p>
+                <!-- Poster Banner Image (mener.png) -->
+                <div class="munir-poster-banner">
+                    <div class="munir-poster-badge">عروض آخر العام</div>
+                    <img src="mener.png" alt="إعلان عروض د. منير الوصابي - مستشفى الأنهار التخصصي">
+                    <div class="munir-poster-overlay"></div>
                 </div>
 
-                <!-- عرض 2 -->
-                <div class="feature-card">
-                    <div class="feature-icon" style="background-color: rgba(10, 42, 94, 0.1); color: var(--primary-navy);">📡</div>
-                    <h3>خصم السونار</h3>
-                    <p style="font-size: 1.5rem; font-weight: 800; color: var(--primary-navy); margin: 0.5rem 0;">خصم 50%</p>
-                    <p>فحوصات الموجات فوق الصوتية (السونار) بنصف التكلفة.</p>
+                <!-- Header Info Below Poster -->
+                <div class="offer-munir-header">
+                    <div class="munir-header-content">
+                        <h2>أكبر صرح طبي في محافظة الحديدة</h2>
+                        <div class="subtitle">جراحة عامة وجراحة أوعية دموية</div>
+                    </div>
+                    <div class="munir-doctor-info">
+                        <div class="munir-doctor-photo">
+                            <!-- ⚠️ تم تحديث صورة د. منير الوصابي هنا -->
+                            <img src="menerperson.png" alt="د. منير الوصابي">
+                        </div>
+                        <h3>د. منير الوصابي</h3>
+                        <div class="specialty">أخصائي جراحة عامة<br>وجراحة أوعية دموية</div>
+                        <span class="free-exam-badge-munir">المعاينة مجاناً</span>
+                    </div>
                 </div>
 
-                <!-- عرض 3 -->
-                <div class="feature-card">
-                    <div class="feature-icon" style="background-color: rgba(30, 74, 138, 0.1); color: var(--secondary-blue);">🧪</div>
-                    <h3>الفحوصات المخبرية</h3>
-                    <p style="font-size: 1.5rem; font-weight: 800; color: var(--secondary-blue); margin: 0.5rem 0;">خصم 30%</p>
-                    <p>خصم خاص على كافة الفحوصات الطبية والمخبرية للعيادة.</p>
+                <!-- Date Pills -->
+                <div class="date-pills">
+                    <div class="date-pill date-pill-white">
+                        <span>📅</span>
+                        <span>العرض من <span class="date-highlight">20 أكتوبر</span> حتى <span class="date-highlight">30 ديسمبر 2026م</span></span>
+                    </div>
+                    <div class="date-pill date-pill-blue">
+                        <span>📅</span>
+                        <span>العرض من <span class="date-highlight">20 أكتوبر</span> حتى <span class="date-highlight">30 ديسمبر 2026م</span></span>
+                    </div>
                 </div>
 
-                <!-- عرض 4 -->
-                <div class="feature-card">
-                    <div class="feature-icon" style="background-color: rgba(46, 204, 113, 0.1); color: var(--accent-green);">💊</div>
-                    <h3>صرف العلاج مجاناً</h3>
-                    <p style="font-size: 1.2rem; font-weight: 800; color: var(--primary-navy); margin: 0.5rem 0;">يومي الإثنين والخميس</p>
-                    <p>صرف أدوية عيادة النساء والولادة مجاناً حسب المتاح بالصيدلية.</p>
+                <!-- Services Grid -->
+                <div class="munir-services">
+                    <!-- Service 1 -->
+                    <div class="munir-service-card">
+                        <div class="munir-service-header">1. الزائدة</div>
+                        <div class="munir-service-icon">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M30 20 C40 20, 45 30, 45 45 C45 60, 35 75, 50 85 C58 90, 68 80, 62 70 C58 63, 52 50, 52 35 C52 20, 40 20, 30 20 Z" fill="#ffcdd2" stroke="#d32f2f" stroke-width="4"/>
+                                <path d="M50 85 C52 89, 58 92, 64 86 C68 82, 66 75, 62 70" fill="#e53935" stroke="#b71c1c" stroke-width="3"/>
+                                <line x1="20" y1="75" x2="45" y2="50" stroke="#00529b" stroke-width="5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="munir-service-text">استئصال الزائدة جراحياً</div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="munir-service-card">
+                        <div class="munir-service-header">2. الفتق</div>
+                        <div class="munir-service-icon">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="25" y="25" width="50" height="50" rx="10" fill="#e3f2fd" stroke="#00529b" stroke-width="4"/>
+                                <circle cx="50" cy="50" r="18" fill="#ef5350" opacity="0.85" stroke="#b71c1c" stroke-width="3"/>
+                            </svg>
+                        </div>
+                        <div class="munir-service-text">إصلاح جميع أنواع الفتق المختلفة</div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="munir-service-card">
+                        <div class="munir-service-header">3. البواسير</div>
+                        <div class="munir-service-icon">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M30 25 Q50 15 70 25 Q75 50 65 75 Q50 85 35 75 Q25 50 30 25 Z" fill="#ffebee" stroke="#d32f2f" stroke-width="3"/>
+                                <circle cx="42" cy="62" r="10" fill="#e53935"/>
+                                <circle cx="58" cy="64" r="8" fill="#ef5350"/>
+                            </svg>
+                        </div>
+                        <div class="munir-service-text">استئصال البواسير جراحياً</div>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="munir-service-card">
+                        <div class="munir-service-header">4. الشق الشرجي</div>
+                        <div class="munir-service-icon">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M30 25 Q50 15 70 25 Q75 50 65 75 Q50 85 35 75 Q25 50 30 25 Z" fill="#ffebee" stroke="#d32f2f" stroke-width="3"/>
+                                <path d="M50 45 L50 70" stroke="#b71c1c" stroke-width="5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="munir-service-text">علاج الشق الشرجي جراحياً أو بالليزر</div>
+                    </div>
                 </div>
 
-            </div>
+                <!-- Price Section -->
+                <div class="munir-price-section">
+                    <div class="munir-price-banner">
+                        <div class="munir-price-amount">
+                            130,000 <span class="munir-price-currency">ريال</span>
+                        </div>
+                        <div class="munir-price-label">سعر العملية</div>
+                    </div>
+                    <div class="meds-warning">
+                        <span>⚠️</span>
+                        <span>الأدوية غير مشمولة في السعر</span>
+                    </div>
+                </div>
 
-            <!-- عرض الولادة القيصرية والطبيعية -->
-            <div class="appointment-form-container" style="margin-top: 2.5rem; text-align: center; background-color: var(--primary-navy); color: var(--white);">
-                <h2 style="color: var(--white);">خصم عمليات الولادة القيصرية والطبيعية</h2>
-                <p style="font-size: 2.5rem; font-weight: 900; color: var(--accent-green); margin: 1rem 0;">خصم 40%</p>
-                <p style="font-size: 1.1rem; opacity: 0.9;">أكتوبر شهر الاهتمام بكِ وبصحة مولودك - مستشفى الأنهار التخصصي صحتكم مسؤوليتنا</p>
-                <div style="margin-top: 1.5rem;">
-                    <a href="index.html#appointment" class="btn btn-primary">احجزي موعدكِ الآن لتأكيد الخصم</a>
+                <!-- Package Details -->
+                <div class="munir-package">
+                    <div class="munir-package-title">الباقة تشمل</div>
+                    <div class="munir-package-grid">
+                        <div class="munir-package-item">
+                            <div class="munir-check">✓</div>
+                            <span>إجراء العملية الجراحية</span>
+                        </div>
+                        <div class="munir-package-item">
+                            <div class="munir-check">✓</div>
+                            <span>رقود لمدة يومين في غرفة عامة</span>
+                        </div>
+                        <div class="munir-package-item">
+                            <div class="munir-check">✓</div>
+                            <span>جميع فحوصات ما قبل العملية</span>
+                        </div>
+                        <div class="munir-package-item">
+                            <div class="munir-check">✓</div>
+                            <span>الأشعة اللازمة</span>
+                        </div>
+                        <div class="munir-package-item">
+                            <div class="munir-check">✓</div>
+                            <span>تخطيط القلب</span>
+                        </div>
+                        <div class="munir-package-item">
+                            <div class="munir-check">✓</div>
+                            <span>التخدير الكامل أو الجزئي حسب الحالة</span>
+                        </div>
+                        <div class="munir-package-item">
+                            <div class="munir-check">✓</div>
+                            <span>كافة مستلزمات العملية</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- 4. الترويسة السفلية الموحدة (Footer) -->
+    <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-brand">
@@ -137,6 +1156,29 @@
         </div>
     </footer>
 
-    <script src="script.js?v=4"></script>
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for back to top
+        document.querySelector('.back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
